@@ -1,9 +1,42 @@
 body {
     background-color: #393e41;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
 }
 
 .hide {
     display: none;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    color: #f6f7eb;
+}
+
+#hold {
+    height: 50px;
+    width: 50px;
+}
+
+#navTitle {
+    font-size: 3rem;
+}
+
+figure {
+    margin: 0;
+}
+
+#stats {
+    fill: #f6f7eb;
+    height: 50px;
+    width: 50px;
+}
+
+#stats path{
+    fill: #f6f7eb;
 }
 
 #mainMenu {
@@ -17,6 +50,23 @@ body {
     width: 90vw;
     height: 90vh;
     margin: auto;
+    justify-content: center;
+}
+
+.menu_button {
+    height: 50px;
+    margin-bottom: 20px;
+    font-weight: bolder
+}
+
+#howToPlay:hover {
+    background-color: #f6f7eb;
+    color: #393e41;
+}
+
+#newGame:hover {
+    background-color: green;
+    color: #f6f7eb;
 }
 
 #letterSection { 
@@ -57,7 +107,6 @@ body {
     padding-top: 1.5vw;
     cursor: pointer;
     font-size: 3em;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
 .correct {
