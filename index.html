@@ -4,17 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/styles.css">
-    <title>WORD5</title>
+    <title>5WORDS</title>
 </head>
 <body>
     <header>
-
+        <div id="hold"></div>
+        <div id="navTitle">
+            5Words
+        </div>
+        <div>
+            <figure>
+                <img id="stats" src="./assets/stats.svg" alt="">
+            </figure>
+        </div>
     </header>
     <main>
         <section id="mainMenu" class="menu">
             <div class="menuContainer">
-                <button type="button" id="newGame">NEW GAME</button>
-                <button type="button" id="howToPlay">How to play</button>
+                <button type="button" class="menu_button" id="newGame">NEW GAME</button>
+                <button type="button" class="menu_button" id="howToPlay">How to play</button>
             </div>
         </section>
         <section id="letterSection" class="letter_game hide">
@@ -56,7 +64,10 @@
                 </div>              
 
             </div>
-            <button type="button" class="check">CHECK</button>
+            <div>
+                <button type="button" class="check">CHECK</button>
+                <div id="counter">0</div>
+            </div>
         </section>
     </main>
     <footer>
