@@ -1,5 +1,21 @@
+/* A4036F
+048BA8
+16DB93
+EFEA5A
+F29E4C */
+
+:root {
+    --pink: #A4036F;
+    --blue: #048BA8;
+    --green: #16DB93;
+    --yellow: #EFEA5A;
+    --orange: #F29E4C;
+    --grey: #393e41;
+    --white: #f6f7eb;
+  }
+
 body {
-    background-color: #393e41;
+    background-color: var(--grey);
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bolder;
 }
@@ -13,7 +29,7 @@ header {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    color: #f6f7eb;
+    color: var(--blue);
 }
 
 #hold {
@@ -30,13 +46,13 @@ figure {
 }
 
 #stats {
-    fill: #f6f7eb;
+    fill: var(--blue);
     height: 50px;
     width: 50px;
 }
 
 #stats path{
-    fill: #f6f7eb;
+    fill: var(--blue);
 }
 
 #mainMenu {
@@ -60,13 +76,13 @@ figure {
 }
 
 #howToPlay:hover {
-    background-color: #f6f7eb;
-    color: #393e41;
+    background-color: var(--blue);
+    color: var(--white);
 }
 
 #newGame:hover {
-    background-color: green;
-    color: #f6f7eb;
+    background-color: var(--green);
+    color: var(--grey);
 }
 
 #letterSection { 
@@ -96,8 +112,8 @@ figure {
 }
 
 .letter_box {
-    border: 2px solid #f6f7eb;
-    color: #f6f7eb;
+    border: 2px solid var(--white);
+    color: var(--white);
     border-radius: 5px;
     width: 10vw;
     min-width: calc(300px / 5);
@@ -110,37 +126,61 @@ figure {
 }
 
 .correct {
-    background-color: green;
+    background-color: var(--green);
 }
 
 .correctBorder {
-    border-color: green;
+    border-color: var(--green);
 }
 
 .correctRow {
-    background-color: orange;
+    background-color: var(--orange);
 }
 
 .correctRowBorder {
-    border-color: orange;
+    border-color: vvar(--orange);
 }
 
 .correctCol {
-    background-color: #5c415d;
+    background-color: var(--pink);
 }
 
 .correctColBorder {
-    border-color: #5c415d;
+    border-color: var(--pink);
 }
 
 .selected {
-    background-color: blue;
-    color: white;
+    background-color: var(--blue);
+    color: var(--white);
 }
 
 button {
-    border: 2px solid #f6f7eb;
+    border: 2px solid var(--white);
     border-radius: 5px;
-    background-color: #393e41;
-    color: #f6f7eb;
+    background-color: var(--grey);
+    color: var(--white);
+}
+
+.check { 
+    height: 100px;
+    width: 100px;
+}
+
+.check:hover {
+    background-color: var(--blue);
+    color: var(--white);
+}
+
+#checkBox {
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+#checkImg { 
+    height: 100px;
+    width: 100px;
 }
