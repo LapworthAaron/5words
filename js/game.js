@@ -124,8 +124,8 @@ elementsArray.forEach(function(elem) {
 });
 
 check = () => {
+    checkArray = [];
     console.log(chosenWords)
-
     let cB = document.querySelectorAll('.correctBorder');
     cB.forEach(el => {
         el.classList.remove('correctBorder')
@@ -145,21 +145,27 @@ check = () => {
     checkCol();
 
     counter++;
-    console.log(counter)
     document.querySelector('#counter').innerHTML = counter;
+    let checkImg = document.querySelector('#checkImg');
+    let imgName = `./assets/hex_${6 - counter}.png`;
+    checkImg.src = imgName
+
 }
 
 checkRow = (word, index) => {
     let row = document.getElementById('row_' + (index + 1)).children;
     let tempWord = word;
     let tempword2;
+    //check for correct letters
     for (let i = 0; i < 5; i++) {
         if (row[i].innerHTML === tempWord[i]) {
             row[i].classList.add('correct');
-            tempword2 = JSON.parse(JSON.stringify(tempWord.replace(row[i].innerHTML," ")));
-            tempWord = JSON.parse(JSON.stringify(tempword2));
+            tempword2 = tempWord.split('');
+            tempword2[i] = " ";
+            tempWord = tempword2.join('');
         }
     }
+    //check for correct row, but wrong column
     for (let i = 0; i < 5; i++) {
         if (row[i].innerHTML !== tempWord[i] && tempWord.includes(row[i].innerHTML) && !row[i].classList.contains('correct')) {
             row[i].classList.add('correctRow');
@@ -167,42 +173,29 @@ checkRow = (word, index) => {
             tempWord = JSON.parse(JSON.stringify(tempword2));
         }
     }
-    checkArray.push(checkArray);
+    checkArray.push(tempWord);
     console.log(checkArray)
 }
 
+//check for correct column, but incorrect row
 checkCol = () => {
     //check each column
     for (let i = 0; i < 5; i++) {
-        let lettersArray = []
-        //populate column letters
-        for (let j = 0; j < 5; j++) {
-            lettersArray.push(chosenWords[j][i]);
-        }
-        console.log(lettersArray)
-        for (let j = (i+1); j < 26; j+=5) {
-            let letter = document.querySelector(`#letter_${j}`);
-            if (letter.classList.contains('correct')) {
-                for (let k = 0; k < lettersArray.length; k++) {
-                    if (lettersArray[k].toUpperCase() === letter.innerHTML) {
-                        lettersArray[k] = ' ';
-                        break;
-                    }
-                }
-            }
-        }
-        console.log("pre col: " + lettersArray)
         for (let j = (i+1); j < 26; j+=5) {
             let letter = document.querySelector(`#letter_${j}`);
             if (!letter.classList.contains('correct') &&
             !letter.classList.contains('correctBorder') &&
             !letter.classList.contains('correctRow') &&
             !letter.classList.contains('correctRowBorder')) {
-                for (let k = 0; k < lettersArray.length; k++) {
-                    console.log(lettersArray[k].toUpperCase() +" - " + letter.innerHTML);
-                    if (lettersArray[k].toUpperCase() === letter.innerHTML) {
+                console.log("correctCol code")
+                for (let k = 0; k < checkArray[i].length; k++) {
+                    console.log("i: " + i + " - k: " + k)
+                    let tempword = checkArray[i];
+                    console.log(tempword)
+                    console.log(checkArray[k][i].toUpperCase() +" - " + letter.innerHTML);
+                    if (checkArray[k][i].toUpperCase() === letter.innerHTML) {
                         letter.classList.add('correctCol');
-                        lettersArray[k] = ' ';
+                        checkArray[k][i] = ' ';
                         break;
                     }
                 }
