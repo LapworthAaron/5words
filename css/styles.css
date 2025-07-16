@@ -10,7 +10,7 @@ F29E4C */
     --green: #16DB93;
     --yellow: #EFEA5A;
     --orange: #F29E4C;
-    --grey: #393e41;
+    --grey: #000814;
     --white: #f6f7eb;
   }
 
@@ -119,10 +119,11 @@ figure {
     min-width: calc(300px / 5);
     max-height: calc(500px / 5);
     margin-right: 5px;
-    text-align: center;
-    padding-top: 1.5vw;
     cursor: pointer;
     font-size: 3em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .correct {
