@@ -201,18 +201,14 @@ checkCol = () => {
         for (let j = (i+1); j < 26; j+=5) {
             let letter = document.querySelector(`#letter_${j}`);
             if (!letter.classList.contains('correct') &&
-            !letter.classList.contains('correctBorder') &&
-            !letter.classList.contains('correctRow') &&
-            !letter.classList.contains('correctRowBorder')) {
-                console.log("correctCol code")
+            !letter.classList.contains('correctRow')) {
                 for (let k = 0; k < checkArray[i].length; k++) {
-                    console.log("i: " + i + " - k: " + k)
-                    let tempword = checkArray[i];
-                    console.log(tempword)
-                    console.log(checkArray[k][i].toUpperCase() +" - " + letter.innerHTML);
                     if (checkArray[k][i].toUpperCase() === letter.innerHTML) {
                         letter.classList.add('correctCol');
-                        checkArray[k][i] = ' ';
+                        let str = checkArray[k];               // a string
+                        let charArray = str.split('');             // convert to array of characters
+                        charArray[i] = ' ';                        // modify
+                        checkArray[k] = charArray.join('');    // reassign the modified string
                         break;
                     }
                 }
@@ -220,4 +216,5 @@ checkCol = () => {
         }
 
     }
+    console.log(checkArray)
 }
