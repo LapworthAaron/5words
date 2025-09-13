@@ -26,24 +26,10 @@ let checkArray = [];
 // };
 
 // getData(word_file);
-
-const newGame = document.getElementById('newGame');
-//start new game event listener
-newGame.addEventListener("click", () => {
-    toggle('mainMenu','letterSection');
-    populateLetters();
+document.addEventListener("DOMContentLoaded", function() {
+  populateLetters();
 });
 
-// const howToPlay = document.getElementById('howToPlay');
-// howToPlay.addEventListener("click", () => toggle('mainMenu','team-selection'));
-
-//hide and show pages depending on what page you go to
-toggle = (current,newpage) => {
-    let current_ = document.getElementById(current);
-    current_.classList.add('hide'); //add a class to the element
-    let newpage_ = document.getElementById(newpage);
-    newpage_.classList.remove('hide');
-}
 
 //choose words and shuffle, then draw to screen
 populateLetters = () => {
