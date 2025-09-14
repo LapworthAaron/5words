@@ -141,15 +141,32 @@ check = () => {
     chosenWords.forEach((word, index) => {
         checkRow(word.toUpperCase(), index);
     });
+    //validate win
+    checkWin();
     //check column
     checkCol();
 
     //update counter and counter image
     counter++;
     document.querySelector('.counter__count').innerHTML = counter;
-    let checkImg = document.querySelector('#checkImg');
-    let imgName = `./assets/hex_${6 - counter}.png`;
-    checkImg.src = imgName
+    //let checkImg = document.querySelector('#checkImg');
+    // let imgName = `./assets/hex_${6 - counter}.png`;
+    // checkImg.src = imgName
+}
+
+checkWin = () => {
+    let correctWords = 0;
+    for (let i = 0; i < 5; i++) {
+        let row = document.getElementById('row_' + (i + 1)).children;
+        if (row[i].classList.contains('correct')) {
+            correctWords += 1;
+        }
+    }
+    console.log("correct words: ",correctWords)
+
+    if (correctWords === 5) {
+        console.log("complete");
+    }
 }
 
 checkRow = (word, index) => {
@@ -176,7 +193,7 @@ checkRow = (word, index) => {
         }
     }
     checkArray.push(tempWord);
-    console.log(checkArray)
+    console.log(checkArray);
 }
 
 //check for correct column, but incorrect row
