@@ -146,7 +146,7 @@ check = () => {
 
     //update counter and counter image
     counter++;
-    document.querySelector('#counter').innerHTML = counter;
+    document.querySelector('.counter__count').innerHTML = counter;
     let checkImg = document.querySelector('#checkImg');
     let imgName = `./assets/hex_${6 - counter}.png`;
     checkImg.src = imgName
