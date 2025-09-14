@@ -114,7 +114,7 @@ figure {
     height: max-content;
     z-index: 10;
     max-width: 80vw;
-    max-height: 90vh;
+    max-height: 80vh;
     background-color: var(--grey);
     border: 5px solid var(--white);
     border-radius: 5px;
@@ -206,12 +206,18 @@ figure {
 .letter_container {
     display: grid;
     grid-template-rows: repeat(5, calc((100% - 20px) / 5));
-    grid-template-columns: repeat(5, calc((100% - 20px) / 5));
+    grid-template-columns: 1fr;
     margin: auto;
     gap: 5px;
     height: clamp(300px,100%,500px);
     width: clamp(300px,100%,500px);
     aspect-ratio: 1/1
+}
+
+.rows {
+    display: grid;
+    grid-template-columns: repeat(5, calc((100% - 20px) / 5));
+    gap: 5px;
 }
 
 .letter_box {
