@@ -12,12 +12,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
 //choose words and shuffle, then draw to screen
 populateLetters = async() => {
-    const chosenWords = await callapi();
+    chosenWords = await callapi();
     // for (let i = 0; i < 5; i++) {
     //     let num = Math.floor(Math.random() * words.length);
     //     chosenWords.push(words[num]);
     //     words.splice(num, 1); //remove chosen word from words array, so no duplicates
     // }
+    //console.log('chosenWords: ', chosenWords);
     let joinedWords = chosenWords.join('').toUpperCase();
     let shuffledWords = shuffle(joinedWords);
     updateHTML(shuffledWords);
