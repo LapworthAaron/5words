@@ -4,27 +4,6 @@ let chosenWords = [];
 let counter = 0;
 let checkArray = [];
 
-// async function getData(file) {
-//     await fetch(file)
-//         .then(response => {
-//             return response.text();
-//         })
-//         .then(data => {
-//             console.log(data);
-//             console.log(data.length);
-//             console.log(data[10]);
-//             for (let i = 0; i < data.length; i++) {
-//                 words.push(data[i].word);
-//                 console.log(data[i].word)
-//             };
-//         })
-//         .catch((error) => {
-//             console.log(error);
-//             console.log("5_WORDS.json fetch went wrong")
-//         });  
-
-// };
-
 // getData(word_file);
 document.addEventListener("DOMContentLoaded", function() {
   populateLetters();
@@ -32,16 +11,30 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 //choose words and shuffle, then draw to screen
-populateLetters = () => {
-    for (let i = 0; i < 5; i++) {
-        let num = Math.floor(Math.random() * words.length);
-        chosenWords.push(words[num]);
-        words.splice(num, 1); //remove chosen word from words array, so no duplicates
-    }
-    console.log('chosenWords: ',chosenWords);
+populateLetters = async() => {
+    const chosenWords = await callapi();
+    // for (let i = 0; i < 5; i++) {
+    //     let num = Math.floor(Math.random() * words.length);
+    //     chosenWords.push(words[num]);
+    //     words.splice(num, 1); //remove chosen word from words array, so no duplicates
+    // }
     let joinedWords = chosenWords.join('').toUpperCase();
     let shuffledWords = shuffle(joinedWords);
     updateHTML(shuffledWords);
+}
+
+ //call the api to get the days 5 words
+callapi = async() => {
+    try {
+        const response = await fetch('https://5words.co.uk/api/get_daily_words.php');
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const data = await response.json(); // or response.text() if it's not JSON
+        return [data[0].word_1, data[0].word_2, data[0].word_3, data[0].word_4, data[0].word_5];
+    } catch (error) {
+        console.error('Error fetching daily words:', error);
+    } 
 }
 
 //shuffle all letters to randomise order
