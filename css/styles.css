@@ -298,6 +298,10 @@ main {
     color: var(--white);
 }
 
+.counter_container {
+    padding: 0 5px;
+}
+
 .counter__title,
 .counter__count {
     color: var(--white);

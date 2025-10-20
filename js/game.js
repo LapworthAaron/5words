@@ -12,16 +12,16 @@ document.addEventListener("DOMContentLoaded", function() {
 
 //choose words and shuffle, then draw to screen
 populateLetters = async() => {
-    chosenWords = await callapi();
+    const { words: api_words, shuffled: api_shuffle } = await callapi();
+    chosenWords = api_words;
+    // console.log(chosenWords)
     // for (let i = 0; i < 5; i++) {
     //     let num = Math.floor(Math.random() * words.length);
     //     chosenWords.push(words[num]);
     //     words.splice(num, 1); //remove chosen word from words array, so no duplicates
     // }
     //console.log('chosenWords: ', chosenWords);
-    let joinedWords = chosenWords.join('').toUpperCase();
-    let shuffledWords = shuffle(joinedWords);
-    updateHTML(shuffledWords);
+    updateHTML(api_shuffle);
 }
 
  //call the api to get the days 5 words
@@ -32,7 +32,7 @@ callapi = async() => {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
         const data = await response.json(); // or response.text() if it's not JSON
-        return [data[0].word_1, data[0].word_2, data[0].word_3, data[0].word_4, data[0].word_5];
+        return { words: [data[0].word_1, data[0].word_2, data[0].word_3, data[0].word_4, data[0].word_5], shuffled: data[0].shuffle_words};
     } catch (error) {
         console.error('Error fetching daily words:', error);
     } 
