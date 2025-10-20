@@ -21,7 +21,7 @@ populateLetters = async() => {
     //     words.splice(num, 1); //remove chosen word from words array, so no duplicates
     // }
     //console.log('chosenWords: ', chosenWords);
-    updateHTML(api_shuffle);
+    updateHTML(api_shuffle.toUpperCase());
 }
 
  //call the api to get the days 5 words
