@@ -24,15 +24,55 @@
         </div>
     </header>
     <main>
-        <section id="mainMenu" class="menu">
-            <div class="menuContainer">
-                <a href="./game.html">
-                    <button class="button menu_button" id="newGame">NEW GAME</button>
-                </a>
-                <button type="button" class="button menu_button" id="howToPlay">How to play</button>
+        <section id="letterSection" class="letter_game">
+            <div id="letter_container" class="letter_container">
+                <div id="row_1" class="rows">
+                    <div class="letter_box" id="letter_1"></div>
+                    <div class="letter_box" id="letter_2"></div>
+                    <div class="letter_box" id="letter_3"></div>
+                    <div class="letter_box" id="letter_4"></div>
+                    <div class="letter_box" id="letter_5"></div>
+                </div>
+                <div id="row_2" class="rows">
+                    <div class="letter_box" id="letter_6"></div>
+                    <div class="letter_box" id="letter_7"></div>
+                    <div class="letter_box" id="letter_8"></div>
+                    <div class="letter_box" id="letter_9"></div>
+                    <div class="letter_box" id="letter_10"></div>
+                </div>
+                <div id="row_3" class="rows">
+                    <div class="letter_box" id="letter_11"></div>
+                    <div class="letter_box" id="letter_12"></div>
+                    <div class="letter_box" id="letter_13"></div>
+                    <div class="letter_box" id="letter_14"></div>
+                    <div class="letter_box" id="letter_15"></div>
+                </div>
+                <div id="row_4" class="rows">
+                    <div class="letter_box" id="letter_16"></div>
+                    <div class="letter_box" id="letter_17"></div>
+                    <div class="letter_box" id="letter_18"></div>
+                    <div class="letter_box" id="letter_19"></div>
+                    <div class="letter_box" id="letter_20"></div>
+                </div>
+                <div id="row_5" class="rows">
+                    <div class="letter_box" id="letter_21"></div>
+                    <div class="letter_box" id="letter_22"></div>
+                    <div class="letter_box" id="letter_23"></div>
+                    <div class="letter_box" id="letter_24"></div>
+                    <div class="letter_box" id="letter_25"></div>
+                </div>
             </div>
         </section>
     </main>
+    <section id="scoreArea">
+        <div id="checkBox">
+            <button type="button" class="button check">CHECK</button>
+            <div class="counter_container">
+                <h2 class="counter__title">Checks</h2>
+                <h2 class="counter__count">0</h2>
+            </div>
+        </div>
+    </section>
     <dialog class="howToPlay__modal">
         <button class="button howToPlay__close">X</button>
         <section>
@@ -113,13 +153,55 @@
             </div>
         </section>
     </dialog>
+    <section id="google_adsense">
+
+    </section>
     <footer>
-        <section>
-            <div>Privacy Policy</div>
-            <div>Contact Us</div>
+        <section class="footer__link-container">
+            <div id="privacy" class="footer_link">Privacy Policy</div>
+            <a class="footer_link" href="mailto:albansoftware@gmail.com">Contact Us</a>
         </section>
     </footer>
+    <dialog class="privacy__modal">
+        <button class="button privacy__close">X</button>
+        <section>
+            <div>
+                <h2 class="privacy__title">Privacy Policy</h2>
+                <br><p class="privacy__copy">Effective Date: 24th October 2025</p>
+                <br><p class="privacy__copy">This Privacy Policy explains how we collect, use, and protect your information when you visit [Your Website Name] ("we", "our", or "us"). By using our website, you agree to the terms outlined below.</p>
+                <br><h3 class="privacy__copy">1. Information We Collect</h3>
+                <p class="privacy__copy">We may collect the following types of information:</p>
+                <p class="privacy__copy">- Personal Information: Name, email address, or other contact details if you submit them via forms.</p>
+                <p class="privacy__copy">- Non-Personal Information: Browser type, device information, pages visited, and time spent on site.</p>
+                <br><h3 class="privacy__copy">2. Use of Cookies</h3>
+                <p class="privacy__copy">We use cookies to enhance your browsing experience. Cookies are small data files stored on your device that help us:</p>
+                <p class="privacy__copy">- Remember your preferences</p>
+                <p class="privacy__copy">- Analyze site traffic</p>
+                <p class="privacy__copy">- Serve personalized ads via third-party vendors like Google</p>
+                <p class="privacy__copy">You can disable cookies through your browser settings, but some features may not function properly.</p>
+                <br><h3 class="privacy__copy">3. Google AdSense and Third-Party Advertising</h3>
+                <p class="privacy__copy">We use Google AdSense to display ads. Google and its partners may use cookies to serve ads based on your prior visits to this and other websites.</p>
+                <p class="privacy__copy">Google’s use of advertising cookies enables it and its partners to serve ads to you based on your visit to our site and/or other sites on the Internet.</p>
+                <p class="privacy__copy">You can opt out of personalized advertising by visiting Google Ads Settings.</p>
+                <br><h3 class="privacy__copy">4. Data Sharing</h3>
+                <p class="privacy__copy">We do not sell, trade, or rent your personal information. We may share data with trusted third-party services for analytics, advertising, or site functionality.</p>
+                <br><h3 class="privacy__copy">5. Your Rights</h3>
+                <p class="privacy__copy">You have the right to:</p>
+                <p class="privacy__copy">- Access, update, or delete your personal data</p>
+                <p class="privacy__copy">- Opt out of marketing communications</p>
+                <p class="privacy__copy">- Request information about how your data is used</p>
+                <p class="privacy__copy">To exercise these rights, contact us at albansoftware@gmail.com.</p>
+                <br><h3 class="privacy__copy">6. Changes to This Policy</h3>
+                <p class="privacy__copy">We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated effective date.</p>
+                <br><h3 class="privacy__copy">7. Contact Us</h3>
+                <p class="privacy__copy">If you have questions about this Privacy Policy, please contact us at: Email: albansoftware@gmail.com</p>
+                <br><p class="privacy__copy">Website: 5words.co.ok</p>
+            </div>
+        </section>
+    </dialog>
 </body>
-<script src="./js/mainmenu.js"></script>
+<script src="./js/game.js"></script>
+<!-- <script src="./js/words.js"></script> -->
 <script src="./js/nav.js"></script>
+<script src="./js/footer.js"></script>
 </html>

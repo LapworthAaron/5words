@@ -1,9 +1,3 @@
-/* A4036F
-048BA8
-16DB93
-EFEA5A
-F29E4C */
-
 :root {
     --pink: #A4036F;
     --blue: #048BA8;
@@ -111,16 +105,22 @@ figure {
     color: var(--white);
 }
 
+.howToPlay_icon:hover,
+#stats {
+    cursor: pointer;
+}
+
 #newGame:hover {
     background-color: var(--green);
     color: var(--grey);
 }
 
-/******************************/
-/* How to play and stats modal          */
-/******************************/
+/****************************************/
+/* How to play, stats and privacy modal */
+/****************************************/
 .howToPlay__modal,
-.stats__modal {
+.stats__modal,
+.privacy__modal {
     position: fixed;
     top: 0;
     left: 0;
@@ -136,7 +136,8 @@ figure {
 }
 
 .howToPlay__close,
-.stats__close {
+.stats__close,
+.privacy__close {
     position: sticky;
     top: 0;
     left: 100%;
@@ -145,18 +146,21 @@ figure {
 }
 
 .howToPlay__title,
-.stats__title {
+.stats__title,
+.privacy__title {
     color: var(--white);
 }
 
 .howToPlay__subtitle,
-.stats__subtitle {
+.stats__subtitle,
+.privacy__subtitle {
     color: var(--white);
     text-decoration: underline;
 }
 
 .howToPlay__copy,
-.stats__copy {
+.stats__copy,
+.privacy__copy {
     color: var(--white);
     font-weight: 400;
     margin: 0;
@@ -212,12 +216,8 @@ figure {
 /******************************/
 /* Game board                 */
 /******************************/
-main {
-    margin: 0 10px;
-}
-
 #letterSection { 
-    margin: 50px 0;
+    margin: 50px 0 0;
     text-align: center;
 }
 
@@ -285,6 +285,12 @@ main {
     color: var(--white);
 }
 
+/******************************/
+/* Score Area                 */
+/******************************/
+#scoreArea {
+    margin: 10px 0 50px;
+}
 
 .check { 
     max-width: 196px;
@@ -321,4 +327,71 @@ main {
 #checkImg { 
     height: 100px;
     width: 100px;
+}
+
+
+
+/******************************/
+/* Footer                     */
+/******************************/
+.footer__link-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+.footer_link {
+    cursor: pointer;
+    color: var(--white);
+    text-decoration: underline;
+}
+
+@media (orientation: landscape) and (max-width:1200px) {
+    body {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        grid-template-rows: auto 1fr auto;
+        height: 100%;
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    header {
+        grid-area: 1 / 1 / 2 / 2;
+        height: 60px;
+    }  
+     
+    main {
+        grid-area: 1 / 2 / 4 / 3;
+        height: calc(100vh - 40px);
+        max-height: 500px;
+        aspect-ratio: 1 / 1;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    .letter_container {
+        height: unset;
+        width: unset;
+    }
+    #letterSection { 
+        margin: 0;
+        text-align: center;
+    }
+
+    #scoreArea {
+        grid-area: 2 / 1 / 3 / 2;
+        margin: 10px 10px;
+        align-self: center;
+    }
+    #checkBox {
+        flex-direction: column;
+    }
+    footer {
+        grid-area: 3 / 1 / 4 / 2;
+        margin: 10px;
+    }
+
+
 }

@@ -13,6 +13,8 @@ document.addEventListener("DOMContentLoaded", function() {
 //choose words and shuffle, then draw to screen
 populateLetters = async() => {
     const { words: api_words, shuffled: api_shuffle } = await callapi();
+    console.log(api_words)
+    console.log(api_shuffle)
     chosenWords = api_words;
     // console.log(chosenWords)
     // for (let i = 0; i < 5; i++) {
