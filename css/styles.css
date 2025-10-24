@@ -78,6 +78,10 @@ figure {
 /******************************/
 /* Main page                  */
 /******************************/
+main {
+    padding: 0 10px;
+}
+
 #mainMenu {
     margin: auto;
 }
@@ -290,6 +294,7 @@ figure {
 /******************************/
 #scoreArea {
     margin: 10px 0 50px;
+    padding: 0 10px;
 }
 
 .check { 
