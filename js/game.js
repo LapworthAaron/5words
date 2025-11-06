@@ -6,23 +6,26 @@ let checkArray = [];
 
 // getData(word_file);
 document.addEventListener("DOMContentLoaded", function() {
-  populateLetters();
+    //TODO: if statement to load complete board from local storage or populateletters if not
+    populateLetters();
 });
 
+//non api based random words game - practice mode?
+// console.log(chosenWords)
+// for (let i = 0; i < 5; i++) {
+//     let num = Math.floor(Math.random() * words.length);
+//     chosenWords.push(words[num]);
+//     words.splice(num, 1); //remove chosen word from words array, so no duplicates
+// }
 
 //choose words and shuffle, then draw to screen
 populateLetters = async() => {
     const { words: api_words, shuffled: api_shuffle } = await callapi();
-    console.log(api_words)
-    console.log(api_shuffle)
+    // console.log(api_words)
+    // console.log(api_shuffle)
+    //TODO: add game started to local storage
+    //TODO: check if yesterdays game was started and if not copmleted - add 1 to lost
     chosenWords = api_words;
-    // console.log(chosenWords)
-    // for (let i = 0; i < 5; i++) {
-    //     let num = Math.floor(Math.random() * words.length);
-    //     chosenWords.push(words[num]);
-    //     words.splice(num, 1); //remove chosen word from words array, so no duplicates
-    // }
-    //console.log('chosenWords: ', chosenWords);
     updateHTML(api_shuffle.toUpperCase());
 }
 
@@ -124,6 +127,10 @@ elementsArray.forEach(function(elem) {
 
 //check for correct, correct row then correct column
 check = () => {
+    //update counter and counter image
+    counter++;
+    document.querySelector('.counter__count').innerHTML = counter;
+
     checkArray = [];
     console.log(chosenWords)
 
@@ -142,29 +149,42 @@ check = () => {
     //check column
     checkCol();
 
-    //update counter and counter image
-    counter++;
-    document.querySelector('.counter__count').innerHTML = counter;
-    //let checkImg = document.querySelector('#checkImg');
+    // let checkImg = document.querySelector('#checkImg');
     // let imgName = `./assets/hex_${6 - counter}.png`;
     // checkImg.src = imgName
 }
 
+//check if the game is won
 checkWin = () => {
-    let correctWords = 0;
+    let correctletters = 0;
     for (let i = 0; i < 5; i++) {
         let row = document.getElementById('row_' + (i + 1)).children;
-        if (row[i].classList.contains('correct')) {
-            correctWords += 1;
+        for (let i of row) {
+            if (i.classList.contains('correct')) {
+                correctletters += 1;
+            }
         }
     }
-    console.log("correct words: ",correctWords)
+    //console.log("correct letters: ",correctletters)
 
-    if (correctWords === 5) {
+    if (correctletters === 25) {
         console.log("complete");
-    }
+        //add win to stats
+        statsGameComplete();
+        //TODO: store winning board
+
+        const statsModal = document.querySelector('.stats__modal');
+        setupStatsModal();
+        statsModal.showModal();
+        statsModal.addEventListener('click', function (e) {
+            if (e.target === statsModal) {
+                statsModal.close();
+            }
+        });
+    };
 }
 
+//check if the letters are in the correct row
 checkRow = (word, index) => {
     let row = document.getElementById('row_' + (index + 1)).children;
     let tempWord = word;

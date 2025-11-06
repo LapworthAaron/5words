@@ -221,8 +221,13 @@ main {
 /* Game board                 */
 /******************************/
 #letterSection { 
-    margin: 50px 0 0;
+    margin: 20px 0 0;
     text-align: center;
+
+    
+    @media (min-width:600px) {
+        margin: 50px 0 0;
+    }
 }
 
 .letter_container {
@@ -299,7 +304,7 @@ main {
 
 .check { 
     max-width: 196px;
-    height: auto;
+    height: 70px;
     width: 100%;
     aspect-ratio: 2/1;
 }
@@ -311,6 +316,9 @@ main {
 
 .counter_container {
     padding: 0 5px;
+    display: flex;
+    gap: 15px;
+    
 }
 
 .counter__title,
@@ -333,8 +341,6 @@ main {
     height: 100px;
     width: 100px;
 }
-
-
 
 /******************************/
 /* Footer                     */

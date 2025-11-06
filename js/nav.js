@@ -89,3 +89,46 @@ setupStatsModal = () =>  {
         setupStatsModal();
     }, { once: true });
 };
+
+statsGameComplete = () => {
+    statsAddWin();
+    statsAddStreak();
+    statsBestChecks();
+    statsBeststreak();
+}
+
+statsAddGames = () => {
+    const stats = JSON.parse(localStorage.getItem('stats_5words'));
+    stats.played +=1;
+    localStorage.setItem('stats_5words', JSON.stringify(stats));
+}
+
+statsAddWin = () => {
+    const stats = JSON.parse(localStorage.getItem('stats_5words'));
+    stats.wins +=1;
+    localStorage.setItem('stats_5words', JSON.stringify(stats));
+}
+
+statsAddStreak = () => {
+    const stats = JSON.parse(localStorage.getItem('stats_5words'));
+    stats.currentStreak +=1;
+    localStorage.setItem('stats_5words', JSON.stringify(stats));
+}
+
+statsBestChecks = () => {
+    const stats = JSON.parse(localStorage.getItem('stats_5words'));
+    const checks = parseInt(document.querySelector('.counter__count').innerHTML);
+    console.log("checks: ", checks)
+    if (stats.min_checks > checks) {
+        stats.min_checks = checks;
+    };
+    localStorage.setItem('stats_5words', JSON.stringify(stats));
+}
+
+statsBeststreak = () => {
+    const stats = JSON.parse(localStorage.getItem('stats_5words'));
+    if (stats.currentStreak >  stats.bestStreak) {
+        stats.bestStreak = stats.currentStreak;
+    };
+    localStorage.setItem('stats_5words', JSON.stringify(stats));
+}
