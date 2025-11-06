@@ -132,7 +132,7 @@ check = () => {
     document.querySelector('.counter__count').innerHTML = counter;
 
     checkArray = [];
-    console.log(chosenWords)
+    //console.log(chosenWords)
 
     //remove all now redundant border classes
     let classes = ['correctBorder', 'correctRowBorder', 'correctColBorder'];
@@ -190,7 +190,7 @@ checkRow = (word, index) => {
     let tempWord = word;
     let tempword2;
     //check for correct letters
-    console.log('check for correct letter')
+    //console.log('check for correct letter')
     for (let i = 0; i < 5; i++) {
         if (row[i].innerHTML === tempWord[i]) {
             row[i].classList.add('correct');
@@ -200,7 +200,7 @@ checkRow = (word, index) => {
         }
     }
     //check for correct row, but wrong column
-    console.log('check for correct row')
+    //console.log('check for correct row')
     for (let i = 0; i < 5; i++) {
         if (row[i].innerHTML !== tempWord[i] && tempWord.includes(row[i].innerHTML) && !row[i].classList.contains('correct')) {
             row[i].classList.add('correctRow');
@@ -209,13 +209,13 @@ checkRow = (word, index) => {
         }
     }
     checkArray.push(tempWord);
-    console.log(checkArray);
+    //console.log(checkArray);
 }
 
 //check for correct column, but incorrect row
 checkCol = () => {
     //check each column
-    console.log('check for correct column')
+    //console.log('check for correct column')
     for (let i = 0; i < 5; i++) {
         for (let j = (i+1); j < 26; j+=5) {
             let letter = document.querySelector(`#letter_${j}`);
@@ -235,5 +235,5 @@ checkCol = () => {
         }
 
     }
-    console.log(checkArray)
+    //console.log(checkArray)
 }
