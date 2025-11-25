@@ -271,7 +271,7 @@ main {
 }
 
 .correctRowBorder {
-    border-color: vvar(--orange);
+    border-color: var(--orange);
 }
 
 .correctCol {
