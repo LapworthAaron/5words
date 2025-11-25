@@ -45,24 +45,31 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
-    initialiseStats()
-
-    // const stats = JSON.parse(localStorage.getItem('stats_5words'));
-    // stats.played += 1;
+    initialiseStats();
 });
 
 initialiseStats  = () =>  {
     const stats = JSON.parse(localStorage.getItem('stats_5words'));
     if (!stats) {
+        statsNewStats();
+    }
+    else {
         localStorage.setItem('stats_5words',
             JSON.stringify({
-                played: 0,
-                wins: 0,
-                currentStreak: 0,
-                min_checks: 0,
-                bestStreak: 0
+                //future proof - allow new local storage variables to be created in the json
+                played: stats.played ? stats.played : 0,
+                wins:  stats.wins ? stats.wins : 0,
+                currentStreak:  stats.currentStreak ? stats.currentStreak : 0,
+                min_checks:  stats.min_checks ? stats.min_checks : 0,
+                bestStreak:  stats.bestStreak ? stats.bestStreak : 0,
+                currentGame_date:  stats.currentGame_date ? stats.currentGame_date : ""
             })
         );
+
+        //check if didn't complete yesterdays game
+        statsStreakOver();
+        //add new games
+        statsAddGames();
     };
 };
 
@@ -97,15 +104,32 @@ statsGameComplete = () => {
     statsBeststreak();
 }
 
+statsNewStats = () => {
+    localStorage.setItem('stats_5words',
+        JSON.stringify({
+            played: 0,
+            wins: 0,
+            currentStreak: 0,
+            min_checks: 0,
+            bestStreak: 0,
+            currentGame_date: ""
+        })
+    );
+}
+
 statsAddGames = () => {
     const stats = JSON.parse(localStorage.getItem('stats_5words'));
-    stats.played +=1;
-    localStorage.setItem('stats_5words', JSON.stringify(stats));
+    if (stats.currentGame_date.substr(5) !== new Date().toJSON().slice(0, 10)) {
+        stats.played +=1;
+        stats.currentGame_date = "prog-".concat(new Date().toJSON().slice(0, 10));
+        localStorage.setItem('stats_5words', JSON.stringify(stats));
+    }
 }
 
 statsAddWin = () => {
     const stats = JSON.parse(localStorage.getItem('stats_5words'));
     stats.wins +=1;
+    stats.currentGame_date = "comp-".concat(new Date().toJSON().slice(0, 10));
     localStorage.setItem('stats_5words', JSON.stringify(stats));
 }
 
@@ -131,4 +155,13 @@ statsBeststreak = () => {
         stats.bestStreak = stats.currentStreak;
     };
     localStorage.setItem('stats_5words', JSON.stringify(stats));
+}
+
+statsStreakOver = () => {
+    const stats = JSON.parse(localStorage.getItem('stats_5words'));
+    stats.currentGame_date.substr(0,6)
+    if (stats.currentGame_date.substr(0,5) === "prog-" && stats.currentGame_date.substr(0,6) !== new Date().toJSON().slice(0, 10)) {
+        stats.currentStreak = 0;
+        localStorage.setItem('stats_5words', JSON.stringify(stats));
+    }
 }

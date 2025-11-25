@@ -6,8 +6,24 @@ let checkArray = [];
 
 // getData(word_file);
 document.addEventListener("DOMContentLoaded", function() {
-    //TODO: if statement to load complete board from local storage or populateletters if not
-    populateLetters();
+    dailyWords();
+
+    //if statement to load complete board from local storage or populateletters if not
+    const boardArray = JSON.parse(localStorage.getItem('board_5words'));
+    if (boardArray && boardArray.date === new Date().toJSON().slice(0, 10)) {
+        loadGameBoard();
+    } else {
+        populateLetters();
+    }
+
+    //event listener for check button
+    let elementsArray = document.querySelectorAll(".check");
+    //cycle through each letter and check them
+    elementsArray.forEach(function(elem) {
+        elem.addEventListener("click", function() {
+            check(true);
+        });
+    });
 });
 
 //non api based random words game - practice mode?
@@ -23,24 +39,26 @@ populateLetters = async() => {
     const { words: api_words, shuffled: api_shuffle } = await callapi();
     // console.log(api_words)
     // console.log(api_shuffle)
-    //TODO: add game started to local storage
-    //TODO: check if yesterdays game was started and if not copmleted - add 1 to lost
     chosenWords = api_words;
     updateHTML(api_shuffle.toUpperCase());
+    saveGameBoard();
+    statsAddGames();
 }
 
- //call the api to get the days 5 words
-callapi = async() => {
-    try {
-        const response = await fetch('https://5words.co.uk/api/get_daily_words.php');
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        const data = await response.json(); // or response.text() if it's not JSON
-        return { words: [data[0].word_1, data[0].word_2, data[0].word_3, data[0].word_4, data[0].word_5], shuffled: data[0].shuffle_words};
-    } catch (error) {
-        console.error('Error fetching daily words:', error);
-    } 
+dailyWords = () => {
+    //call the api to get the days 5 words
+    callapi = async() => {
+        try {
+            const response = await fetch('https://5words.co.uk/api/get_daily_words.php');
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            const data = await response.json(); // or response.text() if it's not JSON
+            return { words: [data[0].word_1, data[0].word_2, data[0].word_3, data[0].word_4, data[0].word_5], shuffled: data[0].shuffle_words};
+        } catch (error) {
+            console.error('Error fetching daily words:', error);
+        } 
+    }
 }
 
 //shuffle all letters to randomise order
@@ -57,14 +75,19 @@ shuffle = (allLetters) => {
     return a.join("");
 }
 
+//
+initialiseLetterClick = () => {
+    let letterBoxes = document.getElementById('letter_container');
+    letterBoxes.addEventListener("click", (event) => swapLetters(event));
+}
+
 //add chosen letters to board and add event listener for clicks
 updateHTML = (letters) => {
     for (let i=0; i < 25; i++) {
         let letterHtml = document.getElementById(`letter_${i+1}`);
         letterHtml.innerHTML = letters[i];
     }
-    let letterBoxes = document.getElementById('letter_container');
-    letterBoxes.addEventListener("click", (event) => swapLetters(event));
+    initialiseLetterClick();
 }
 
 //swap letters
@@ -104,6 +127,8 @@ swapLetters = (event) => {
             lastSelect.classList.remove('selected');
         }, 150);
     }
+    //save board status
+    saveGameBoard();
 }
 
 //add border classes if the swap contains special classes
@@ -114,22 +139,13 @@ swapLettersClasses = (obj, className) => {
     }
 }
 
-//event listener for check button
-let elementsArray = document.querySelectorAll(".check");
-
-//cycle through each letter and check them
-elementsArray.forEach(function(elem) {
-    elem.addEventListener("click", function() {
-        check();
-    });
-});
-
-
 //check for correct, correct row then correct column
-check = () => {
-    //update counter and counter image
-    counter++;
-    document.querySelector('.counter__count').innerHTML = counter;
+check = (counter) => {
+    //update counter if counter is true
+    if (counter) {
+        let count = document.querySelector('.counter__count').innerHTML;
+        document.querySelector('.counter__count').innerHTML = Number(count) + 1;
+    }
 
     checkArray = [];
     //console.log(chosenWords)
@@ -149,6 +165,9 @@ check = () => {
     //check column
     checkCol();
 
+    //save board status
+    saveGameBoard();
+    //image counter
     // let checkImg = document.querySelector('#checkImg');
     // let imgName = `./assets/hex_${6 - counter}.png`;
     // checkImg.src = imgName
@@ -165,14 +184,14 @@ checkWin = () => {
             }
         }
     }
-    //console.log("correct letters: ",correctletters)
-
+    
     if (correctletters === 25) {
         console.log("complete");
         //add win to stats
         statsGameComplete();
-        //TODO: store winning board
-
+        //save board status
+        saveGameBoard();
+        //load modal
         const statsModal = document.querySelector('.stats__modal');
         setupStatsModal();
         statsModal.showModal();
@@ -233,7 +252,29 @@ checkCol = () => {
                 }
             }   
         }
-
     }
     //console.log(checkArray)
 }
+
+//store game board so it doesn't reset each load
+saveGameBoard = () => {
+    let boardArray = document.getElementById('letterSection').innerHTML;
+    localStorage.setItem('board_5words',
+        JSON.stringify({
+            date: new Date().toJSON().slice(0, 10),
+            board: boardArray,
+            counter: document.querySelector('.counter__count').innerHTML,
+            words: chosenWords
+        })
+    );
+}
+
+//load game board so it doesn't reset each load
+loadGameBoard = () => {
+    const boardArray = JSON.parse(localStorage.getItem('board_5words'));
+    document.getElementById('letterSection').innerHTML = boardArray.board;
+    chosenWords = boardArray.words;
+    document.querySelector('.counter__count').innerHTML = boardArray.counter;
+    initialiseLetterClick(0);
+}
+
