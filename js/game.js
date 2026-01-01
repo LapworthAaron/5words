@@ -275,6 +275,6 @@ loadGameBoard = () => {
     document.getElementById('letterSection').innerHTML = boardArray.board;
     chosenWords = boardArray.words;
     document.querySelector('.counter__count').innerHTML = boardArray.counter;
-    initialiseLetterClick(0);
+    initialiseLetterClick();
 }
 
