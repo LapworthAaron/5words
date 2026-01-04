@@ -3,17 +3,29 @@ const word_file = "./assets/5_WORDS.json";
 let chosenWords = [];
 let counter = 0;
 let checkArray = [];
+let currentGame = 0;
+let latestGame = 0;
+let liveGame = 0;
 
 // getData(word_file);
-document.addEventListener("DOMContentLoaded", function() {
-    dailyWords();
+document.addEventListener("DOMContentLoaded", async () => {
+    const daily = await dailyWords();
+    latestGame = daily.gameId;
 
     //if statement to load complete board from local storage or populateletters if not
     const boardArray = JSON.parse(localStorage.getItem('board_5words'));
-    if (boardArray && boardArray.date === new Date().toJSON().slice(0, 10)) {
-        loadGameBoard();
+    if (boardArray) {
+        if (boardArray.id === latestGame) {
+            loadGameBoard();
+            currentGame = boardArray.id ? boardArray.id : 0;
+            liveGame = currentGame;
+        } else {
+            liveGame = latestGame;
+            populateLetters(daily);
+        }
     } else {
-        populateLetters();
+        liveGame = latestGame;
+        populateLetters(daily);
     }
 
     //event listener for check button
@@ -35,47 +47,38 @@ document.addEventListener("DOMContentLoaded", function() {
 // }
 
 //choose words and shuffle, then draw to screen
-populateLetters = async() => {
-    const { words: api_words, shuffled: api_shuffle } = await callapi();
-    // console.log(api_words)
-    // console.log(api_shuffle)
-    chosenWords = api_words;
-    updateHTML(api_shuffle.toUpperCase());
+populateLetters = async(daily) => {
+    chosenWords = daily.words;
+    updateHTML(daily.shuffled.toUpperCase());
     saveGameBoard();
     statsAddGames();
 }
 
-dailyWords = () => {
-    //call the api to get the days 5 words
-    callapi = async() => {
-        try {
-            const response = await fetch('https://5words.co.uk/api/get_daily_words.php');
-            if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-            }
-            const data = await response.json(); // or response.text() if it's not JSON
-            return { words: [data[0].word_1, data[0].word_2, data[0].word_3, data[0].word_4, data[0].word_5], shuffled: data[0].shuffle_words};
-        } catch (error) {
-            console.error('Error fetching daily words:', error);
-        } 
+//api call
+const dailyWords = async () => {
+    try {
+        const response = await fetch('https://5words.co.uk/api/get_daily_words.php');
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const data = await response.json();
+        return {
+            gameId: data[0].game_id,
+            words: [
+                data[0].word_1,
+                data[0].word_2,
+                data[0].word_3,
+                data[0].word_4,
+                data[0].word_5
+            ],
+            shuffled: data[0].shuffle_words
+        };
+    } catch (error) {
+        console.error('Error fetching daily words:', error);
     }
-}
+};
 
-//shuffle all letters to randomise order
-shuffle = (allLetters) => {
-    var a = allLetters.split(""),
-        n = a.length;
-
-    for(var i = n - 1; i > 0; i--) {
-        var j = Math.floor(Math.random() * (i + 1));
-        var tmp = a[i];
-        a[i] = a[j];
-        a[j] = tmp;
-    }
-    return a.join("");
-}
-
-//
+//click event for clicking on letters
 initialiseLetterClick = () => {
     let letterBoxes = document.getElementById('letter_container');
     letterBoxes.addEventListener("click", (event) => swapLetters(event));
@@ -261,6 +264,7 @@ saveGameBoard = () => {
     let boardArray = document.getElementById('letterSection').innerHTML;
     localStorage.setItem('board_5words',
         JSON.stringify({
+            id: liveGame,
             date: new Date().toJSON().slice(0, 10),
             board: boardArray,
             counter: document.querySelector('.counter__count').innerHTML,
