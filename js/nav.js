@@ -143,7 +143,7 @@ statsBestChecks = () => {
     const stats = JSON.parse(localStorage.getItem('stats_5words'));
     const checks = parseInt(document.querySelector('.counter__count').innerHTML);
     console.log("checks: ", checks)
-    if (stats.min_checks > checks) {
+    if (stats.min_checks > checks || stats.min_checks === 0) {
         stats.min_checks = checks;
     };
     localStorage.setItem('stats_5words', JSON.stringify(stats));
