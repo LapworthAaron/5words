@@ -17,6 +17,10 @@ body {
     box-sizing: border-box;
 }
 
+button {
+    cursor: pointer;
+}
+
 .hide {
     display: none;
 }
@@ -210,11 +214,16 @@ main {
     margin: 50px 0 10px;
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
 }
 
-.stats_delete {
+.stats_btn_close,
+.stats_btn_delete {
     padding: 10px;
+}
+
+.button.stats_btn_delete {
+    background-color: var(--pink);
 }
 
 /******************************/
@@ -299,7 +308,7 @@ main {
 /******************************/
 #scoreArea {
     margin: 10px 0 50px;
-    padding: 0 10px;
+    padding: 0;
 }
 
 .check { 

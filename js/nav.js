@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 initialiseStats  = () =>  {
-    const stats = JSON.parse(localStorage.getItem('stats_5words'));
+    let stats = JSON.parse(localStorage.getItem('stats_5words'));
     if (!stats) {
         statsNewStats();
     }
@@ -75,7 +75,7 @@ initialiseStats  = () =>  {
 
 
 setupStatsModal = () =>  {
-    const stats = JSON.parse(localStorage.getItem('stats_5words'));
+    let stats = JSON.parse(localStorage.getItem('stats_5words'));
 
     const played = document.querySelector('.played');
     played.innerHTML = stats.played;
@@ -88,20 +88,33 @@ setupStatsModal = () =>  {
     const best_streak = document.querySelector('.best_streak');
     best_streak.innerHTML = stats.bestStreak;
 
-    const stats_delete = document.querySelector('.stats_delete');
+    const stats_delete = document.querySelector('.stats_btn_delete');
 
     stats_delete.addEventListener("click", () => {
         localStorage.removeItem('stats_5words');
         initialiseStats();
         setupStatsModal();
     }, { once: true });
+
+    const stats_close = document.querySelector('.stats_btn_close');
+    stats_close.addEventListener("click", () => {
+        const statsModal = document.querySelector('.stats__modal');
+        statsModal.close();
+        statsModal.removeEventListener('click', function (e) {
+            if (e.target === statsModal) {
+                statsModal.close();
+            }
+        });
+    }, { once: true });
 };
 
 statsGameComplete = () => {
-    statsAddWin();
-    statsAddStreak();
-    statsBestChecks();
-    statsBeststreak();
+    let stats = JSON.parse(localStorage.getItem('stats_5words'));
+    stats = statsAddWin(stats);
+    stats = statsAddStreak(stats);
+    stats = statsBestChecks(stats);
+    stats = statsBeststreak(stats);
+    localStorage.setItem('stats_5words', JSON.stringify(stats));
 }
 
 statsNewStats = () => {
@@ -118,7 +131,7 @@ statsNewStats = () => {
 }
 
 statsAddGames = () => {
-    const stats = JSON.parse(localStorage.getItem('stats_5words'));
+    let stats = JSON.parse(localStorage.getItem('stats_5words'));
     if (stats.currentGame_date.substr(5) !== new Date().toJSON().slice(0, 10)) {
         stats.played +=1;
         stats.currentGame_date = "prog-".concat(new Date().toJSON().slice(0, 10));
@@ -126,39 +139,35 @@ statsAddGames = () => {
     }
 }
 
-statsAddWin = () => {
-    const stats = JSON.parse(localStorage.getItem('stats_5words'));
+statsAddWin = (stats) => {
     stats.wins +=1;
     stats.currentGame_date = "comp-".concat(new Date().toJSON().slice(0, 10));
-    localStorage.setItem('stats_5words', JSON.stringify(stats));
+    return stats;
 }
 
-statsAddStreak = () => {
-    const stats = JSON.parse(localStorage.getItem('stats_5words'));
+statsAddStreak = (stats) => {
     stats.currentStreak +=1;
-    localStorage.setItem('stats_5words', JSON.stringify(stats));
+    return stats;
 }
 
-statsBestChecks = () => {
-    const stats = JSON.parse(localStorage.getItem('stats_5words'));
-    const checks = parseInt(document.querySelector('.counter__count').innerHTML);
+statsBestChecks = (stats) => {
+    let checks = parseInt(document.querySelector('.counter__count').innerHTML);
     console.log("checks: ", checks)
     if (stats.min_checks > checks || stats.min_checks === 0) {
         stats.min_checks = checks;
     };
-    localStorage.setItem('stats_5words', JSON.stringify(stats));
+    return stats;
 }
 
-statsBeststreak = () => {
-    const stats = JSON.parse(localStorage.getItem('stats_5words'));
+statsBeststreak = (stats) => {
     if (stats.currentStreak >  stats.bestStreak) {
         stats.bestStreak = stats.currentStreak;
     };
-    localStorage.setItem('stats_5words', JSON.stringify(stats));
+    return stats;
 }
 
 statsStreakOver = () => {
-    const stats = JSON.parse(localStorage.getItem('stats_5words'));
+    let stats = JSON.parse(localStorage.getItem('stats_5words'));
     stats.currentGame_date.substr(0,6)
     if (stats.currentGame_date.substr(0,5) === "prog-" && stats.currentGame_date.substr(0,6) !== new Date().toJSON().slice(0, 10)) {
         stats.currentStreak = 0;
