@@ -19,6 +19,11 @@ body {
 
 button {
     cursor: pointer;
+    height: 50px;
+
+    &:hover {
+        background-color: var(--green);
+    }
 }
 
 .hide {
@@ -101,7 +106,6 @@ main {
 }
 
 .menu_button {
-    height: 50px;
     width: 100%;
     margin-bottom: 20px;
     font-weight: bolder;
@@ -132,7 +136,7 @@ main {
     position: fixed;
     top: 0;
     left: 0;
-    width: 900px;
+    width: 500px;
     height: max-content;
     z-index: 10;
     max-width: 80vw;
@@ -141,6 +145,14 @@ main {
     border: 5px solid var(--white);
     border-radius: 5px;
     padding: 20px;
+
+    &::backdrop {
+        background: rgba(0, 0, 0, 0.7);
+    }
+}
+
+body:has(dialog[open]) {
+  overflow: hidden;
 }
 
 .howToPlay__close,
@@ -151,6 +163,7 @@ main {
     left: 100%;
     margin: 0;
     font-size: 24px;
+    height: auto;
 }
 
 .howToPlay__title,
@@ -224,6 +237,25 @@ main {
 
 .button.stats_btn_delete {
     background-color: var(--pink);
+
+    &:hover {
+        background-color: var(--grey);
+    }
+}
+.share__container {
+    display: none;
+    max-width: 300px;
+}
+.share__show {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    width: max-content;
+}
+.share__caption {
+    color: var(--white);
+    margin: 5px 0;
 }
 
 /******************************/
@@ -245,8 +277,8 @@ main {
     grid-template-columns: 1fr;
     margin: auto;
     gap: 5px;
-    height: clamp(300px,100%,500px);
-    width: clamp(300px,100%,500px);
+    height: clamp(300px,100%,400px);
+    width: clamp(300px,100%,400px);
     aspect-ratio: 1/1
 }
 
@@ -307,8 +339,9 @@ main {
 /* Score Area                 */
 /******************************/
 #scoreArea {
-    margin: 10px 0 50px;
+    margin: 10px auto 50px;
     padding: 0;
+    max-width: 400px
 }
 
 .check { 
@@ -316,6 +349,8 @@ main {
     height: 70px;
     width: 100%;
     aspect-ratio: 2/1;
+    font-size: 28px;
+    text-transform: uppercase;
 }
 
 .check:hover {
@@ -398,7 +433,7 @@ main {
     text-decoration: underline;
 }
 
-@media (orientation: landscape) and (max-width:1200px) {
+/* @media (orientation: landscape) and (max-width:1200px) {
     body {
         display: grid;
         grid-template-columns: auto 1fr;
@@ -421,6 +456,7 @@ main {
         margin: 0 auto;
         padding: 20px;
     }
+    
     .letter_container {
         height: unset;
         width: unset;
@@ -441,7 +477,5 @@ main {
     footer {
         grid-area: 3 / 1 / 4 / 2;
         margin: 10px;
-    }
-
-
-}
+    } 
+} */

@@ -100,6 +100,7 @@ setupStatsModal = () =>  {
     stats_close.addEventListener("click", () => {
         const statsModal = document.querySelector('.stats__modal');
         statsModal.close();
+        document.querySelector(".share__container").classList.remove("share__show");
         statsModal.removeEventListener('click', function (e) {
             if (e.target === statsModal) {
                 statsModal.close();

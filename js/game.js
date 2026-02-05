@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             loadGameBoard();
             currentGame = boardArray.id ? boardArray.id : 0;
             liveGame = currentGame;
+            document.querySelector(".share__container").classList.remove("share__show");
         } else {
             liveGame = latestGame;
             populateLetters(daily);
@@ -195,9 +196,12 @@ checkWin = () => {
         //save board status
         saveGameBoard();
         //load modal
+        let checks = parseInt(document.querySelector('.counter__count').innerHTML);
+        generateImageWithNumber(checks);
         const statsModal = document.querySelector('.stats__modal');
         setupStatsModal();
         statsModal.showModal();
+        statsModal.querySelector(".share__container").classList.add("share__show");
         statsModal.addEventListener('click', function (e) {
             if (e.target === statsModal) {
                 statsModal.close();
