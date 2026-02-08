@@ -65,9 +65,6 @@ initialiseStats  = () =>  {
                 currentGame_date:  stats.currentGame_date ? stats.currentGame_date : ""
             })
         );
-
-        //check if didn't complete yesterdays game
-        statsStreakOver();
         //add new games
         statsAddGames();
     };
@@ -153,7 +150,7 @@ statsAddStreak = (stats) => {
 
 statsBestChecks = (stats) => {
     let checks = parseInt(document.querySelector('.counter__count').innerHTML);
-    console.log("checks: ", checks)
+    //console.log("checks: ", checks)
     if (stats.min_checks > checks || stats.min_checks === 0) {
         stats.min_checks = checks;
     };
@@ -161,7 +158,7 @@ statsBestChecks = (stats) => {
 }
 
 statsBeststreak = (stats) => {
-    if (stats.currentStreak >  stats.bestStreak) {
+    if (stats.currentStreak > stats.bestStreak) {
         stats.bestStreak = stats.currentStreak;
     };
     return stats;
