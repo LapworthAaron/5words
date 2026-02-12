@@ -16,7 +16,21 @@
 </head>
 <body>
     <header>
-        <div class="howToPlay_icon">?</div>
+        <div class="hamburger" aria-expanded="false" aria-controls="nav">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <nav id="nav" class="nav">
+            <ul>
+                <li><div class="navlink howToPlay_icon">How To Play</a></li>
+                <li><div id="privacy" class="navlink">Privacy Policy</div></li>
+                <li><a class="navlink" href="https://ko-fi.com/albansoftware">Tip Me!</a></li>
+                <!-- <li><a class="navlink" href="#">About</a></li> -->
+            </ul>
+        </nav>
+
         <a href="/index.html" id="navTitle"><img class="header-logo" src="./assets/5words-logo.png" alt="5Words logo"></a>
         <h1 class="page_title hide">5Words</h1>
         <div class="stats_icon">
@@ -105,6 +119,24 @@
                 </ul>
                 <p class="sub-section__copy">It’s a fun, fast, and rewarding way to keep your mind sharp every day.:</p>
                 <p class="sub-section__copy">Challenge yourself, beat your personal best, and share your streak with friends.</p>
+            </div>
+            <div class="sub-section">
+                <h3 class="sub-section__heading">Remember:</h3>
+                <p class="sub-section__copy">The squares will light up with 3 different colours to help guide you to the solution</p>
+                <ul class="howToPlay__colours-list">
+                    <li class="howToPlay__colours">
+                        <img class="howToPlay__image image-letter" src="./assets/green.png" alt="">
+                        <p class="howToPlay__copy"><strong><u>Green:</u></strong> This means you have the correct letter in the correct spot, do not move this anymore</p>
+                    </li>
+                    <li class="howToPlay__colours">
+                        <img class="howToPlay__image image-letter" src="./assets/orange.png" alt="">
+                        <p class="howToPlay__copy"><strong><u>Orange:</u></strong> This means you have a letter that is in the correct row, but not the correct column</p>
+                    </li>
+                    <li class="howToPlay__colours">
+                        <img class="howToPlay__image image-letter" src="./assets/pink.png" alt="">
+                        <p class="howToPlay__copy"><strong><u>Pink:</u></strong> This means you have a letter in the correct column, but not the correct row</p>
+                    </li>
+                </ul>
             </div>
 
         </section>

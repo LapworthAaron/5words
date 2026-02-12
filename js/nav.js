@@ -1,4 +1,33 @@
 document.addEventListener("DOMContentLoaded", function() {
+    const btn = document.querySelector('.hamburger');
+    const nav = document.querySelector('.nav');
+    const navlinks = nav.querySelectorAll('.navlink');
+    btn.addEventListener('click', () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', !expanded);
+        nav.classList.toggle('open');
+    });
+
+    navlinks.forEach(link => {
+        link.addEventListener('click', () => {
+            const expanded = btn.getAttribute('aria-expanded') === 'true';
+            btn.setAttribute('aria-expanded', !expanded);
+            nav.classList.toggle('open');
+        });
+    });
+
+    const toggle = document.querySelector('.hamburger');
+
+    document.addEventListener('click', (e) => {
+    const clickedInsideNav = nav.contains(e.target);
+    const clickedToggle = toggle.contains(e.target);
+
+    // If the nav is open and the click is outside both the nav and the toggle
+    if (nav.classList.contains('open') && !clickedInsideNav && !clickedToggle) {
+        nav.classList.remove('open');
+    }
+    });
+    
     const HTPmodal = document.querySelector('.howToPlay__modal');
     const howToPlay__icon = document.querySelector('.howToPlay_icon');
 

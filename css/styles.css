@@ -44,15 +44,81 @@ header {
     gap: 0 10px;
     border-bottom: 1px solid #fff;
     padding: 10px 0;
+    position: relative;
 }
 
-.howToPlay_icon {
-    height: 32px;
-    width: 50px;
-    color: var(--white);
-    margin: 0;
+/* Hamburger always visible */
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin-right: 22px;
+    height: 19px;
+    width: 28px;
     font-size: 32px;
     text-align: center;
+}
+
+.hamburger:hover span {
+    background: var(--blue);
+}
+
+.hamburger span {
+    width: 28px;
+    height: 3px;
+    background: #fff;
+    transition: 0.3s;
+}
+
+/* NAV CONTAINER (hidden by default) */
+.nav {
+    display: none;
+    position: absolute;
+    top: 100%; /* sits directly below header */
+    left: 0;
+    width: 30%;
+    background: rgba(255,255,255, 0.9);
+    border: 3px solid var(--blue);
+    height: max-content;
+
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.35s ease;
+}
+
+/* When open, allow it to expand */
+.nav.open {
+    display: block;
+    max-height: 300px; /* enough to show all items */
+}
+
+.nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 1rem;
+}
+
+.nav li:not(:last-of-type) {
+    margin-bottom: 0.75rem;
+}
+
+.navlink {
+    cursor: pointer;
+}
+
+.navlink:hover {
+    color: var(--blue);
+}
+
+.nav a,
+.nav div {
+    text-decoration: none;
+    color: #333;
+    font-size: 1rem;
 }
 
 #navTitle {
@@ -419,11 +485,16 @@ body:has(dialog[open]) {
 /******************************/
 /* Footer                     */
 /******************************/
+footer {
+    padding: 30px 0;
+    border-top: 1px solid var(--white);
+}
+
 .footer__link-container {
     display: flex;
     justify-content: space-between;
     max-width: 500px;
-    margin: 30px auto;
+    margin: 0 auto;
     padding: 0 10px;
 }
 
