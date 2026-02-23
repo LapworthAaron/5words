@@ -17,6 +17,15 @@ body {
     box-sizing: border-box;
 }
 
+button {
+    cursor: pointer;
+    height: 50px;
+
+    &:hover {
+        background-color: var(--green);
+    }
+}
+
 .hide {
     display: none;
 }
@@ -35,15 +44,81 @@ header {
     gap: 0 10px;
     border-bottom: 1px solid #fff;
     padding: 10px 0;
+    position: relative;
 }
 
-.howToPlay_icon {
-    height: 32px;
-    width: 50px;
-    color: var(--white);
-    margin: 0;
+/* Hamburger always visible */
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin-right: 22px;
+    height: 19px;
+    width: 28px;
     font-size: 32px;
     text-align: center;
+}
+
+.hamburger:hover span {
+    background: var(--blue);
+}
+
+.hamburger span {
+    width: 28px;
+    height: 3px;
+    background: #fff;
+    transition: 0.3s;
+}
+
+/* NAV CONTAINER (hidden by default) */
+.nav {
+    display: none;
+    position: absolute;
+    top: 100%; /* sits directly below header */
+    left: 0;
+    width: 30%;
+    background: rgba(255,255,255, 0.9);
+    border: 3px solid var(--blue);
+    height: max-content;
+
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.35s ease;
+}
+
+/* When open, allow it to expand */
+.nav.open {
+    display: block;
+    max-height: 300px; /* enough to show all items */
+}
+
+.nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 1rem;
+}
+
+.nav li:not(:last-of-type) {
+    margin-bottom: 0.75rem;
+}
+
+.navlink {
+    cursor: pointer;
+}
+
+.navlink:hover {
+    color: var(--blue);
+}
+
+.nav a,
+.nav div {
+    text-decoration: none;
+    color: #333;
+    font-size: 1rem;
 }
 
 #navTitle {
@@ -97,7 +172,6 @@ main {
 }
 
 .menu_button {
-    height: 50px;
     width: 100%;
     margin-bottom: 20px;
     font-weight: bolder;
@@ -128,7 +202,7 @@ main {
     position: fixed;
     top: 0;
     left: 0;
-    width: 900px;
+    width: 500px;
     height: max-content;
     z-index: 10;
     max-width: 80vw;
@@ -137,6 +211,14 @@ main {
     border: 5px solid var(--white);
     border-radius: 5px;
     padding: 20px;
+
+    &::backdrop {
+        background: rgba(0, 0, 0, 0.7);
+    }
+}
+
+body:has(dialog[open]) {
+  overflow: hidden;
 }
 
 .howToPlay__close,
@@ -147,6 +229,7 @@ main {
     left: 100%;
     margin: 0;
     font-size: 24px;
+    height: auto;
 }
 
 .howToPlay__title,
@@ -210,11 +293,35 @@ main {
     margin: 50px 0 10px;
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
 }
 
-.stats_delete {
+.stats_btn_close,
+.stats_btn_delete {
     padding: 10px;
+}
+
+.button.stats_btn_delete {
+    background-color: var(--pink);
+
+    &:hover {
+        background-color: var(--grey);
+    }
+}
+.share__container {
+    display: none;
+    max-width: 300px;
+}
+.share__show {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    width: max-content;
+}
+.share__caption {
+    color: var(--white);
+    margin: 5px 0;
 }
 
 /******************************/
@@ -236,8 +343,8 @@ main {
     grid-template-columns: 1fr;
     margin: auto;
     gap: 5px;
-    height: clamp(300px,100%,500px);
-    width: clamp(300px,100%,500px);
+    height: clamp(300px,100%,400px);
+    width: clamp(300px,100%,400px);
     aspect-ratio: 1/1
 }
 
@@ -298,8 +405,9 @@ main {
 /* Score Area                 */
 /******************************/
 #scoreArea {
-    margin: 10px 0 50px;
-    padding: 0 10px;
+    margin: 10px auto 50px;
+    padding: 0;
+    max-width: 400px
 }
 
 .check { 
@@ -307,6 +415,8 @@ main {
     height: 70px;
     width: 100%;
     aspect-ratio: 2/1;
+    font-size: 28px;
+    text-transform: uppercase;
 }
 
 .check:hover {
@@ -375,11 +485,16 @@ main {
 /******************************/
 /* Footer                     */
 /******************************/
+footer {
+    padding: 30px 0;
+    border-top: 1px solid var(--white);
+}
+
 .footer__link-container {
     display: flex;
     justify-content: space-between;
     max-width: 500px;
-    margin: 30px auto;
+    margin: 0 auto;
     padding: 0 10px;
 }
 
@@ -389,7 +504,7 @@ main {
     text-decoration: underline;
 }
 
-@media (orientation: landscape) and (max-width:1200px) {
+/* @media (orientation: landscape) and (max-width:1200px) {
     body {
         display: grid;
         grid-template-columns: auto 1fr;
@@ -412,6 +527,7 @@ main {
         margin: 0 auto;
         padding: 20px;
     }
+    
     .letter_container {
         height: unset;
         width: unset;
@@ -432,7 +548,5 @@ main {
     footer {
         grid-area: 3 / 1 / 4 / 2;
         margin: 10px;
-    }
-
-
-}
+    } 
+} */

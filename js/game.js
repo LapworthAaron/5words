@@ -19,23 +19,27 @@ document.addEventListener("DOMContentLoaded", async () => {
             loadGameBoard();
             currentGame = boardArray.id ? boardArray.id : 0;
             liveGame = currentGame;
+            document.querySelector(".share__container").classList.remove("share__show");
         } else {
             liveGame = latestGame;
             populateLetters(daily);
+            //check if didn't complete yesterdays game
+            if (boardArray.complete === "n") {
+                statsStreakOver();
+            }
+        }
+        if (boardArray.complete === "y") {
+            //disable letters
+            //disable check button
         }
     } else {
         liveGame = latestGame;
         populateLetters(daily);
     }
 
+
     //event listener for check button
-    let elementsArray = document.querySelectorAll(".check");
-    //cycle through each letter and check them
-    elementsArray.forEach(function(elem) {
-        elem.addEventListener("click", function() {
-            check(true);
-        });
-    });
+    document.querySelector(".check").addEventListener("click", handleCheck);
 });
 
 //non api based random words game - practice mode?
@@ -46,11 +50,16 @@ document.addEventListener("DOMContentLoaded", async () => {
 //     words.splice(num, 1); //remove chosen word from words array, so no duplicates
 // }
 
+handleCheck = () => {
+  check(true);
+}
+
+
 //choose words and shuffle, then draw to screen
 populateLetters = async(daily) => {
     chosenWords = daily.words;
     updateHTML(daily.shuffled.toUpperCase());
-    saveGameBoard();
+    saveGameBoard("n");
     statsAddGames();
 }
 
@@ -79,9 +88,9 @@ const dailyWords = async () => {
 };
 
 //click event for clicking on letters
+const letterHandler = (event) => swapLetters(event);
 initialiseLetterClick = () => {
-    let letterBoxes = document.getElementById('letter_container');
-    letterBoxes.addEventListener("click", (event) => swapLetters(event));
+    document.getElementById('letter_container').addEventListener("click",letterHandler);
 }
 
 //add chosen letters to board and add event listener for clicks
@@ -131,7 +140,7 @@ swapLetters = (event) => {
         }, 150);
     }
     //save board status
-    saveGameBoard();
+    saveGameBoard("n");
 }
 
 //add border classes if the swap contains special classes
@@ -164,16 +173,14 @@ check = (counter) => {
         checkRow(word.toUpperCase(), index);
     });
     //validate win
-    checkWin();
-    //check column
-    checkCol();
+    let win = checkWin();
 
-    //save board status
-    saveGameBoard();
-    //image counter
-    // let checkImg = document.querySelector('#checkImg');
-    // let imgName = `./assets/hex_${6 - counter}.png`;
-    // checkImg.src = imgName
+    if (!win) {
+        //check column
+        checkCol();
+        //save board status
+        saveGameBoard("n");
+    }
 }
 
 //check if the game is won
@@ -189,21 +196,29 @@ checkWin = () => {
     }
     
     if (correctletters === 25) {
-        console.log("complete");
         //add win to stats
         statsGameComplete();
         //save board status
-        saveGameBoard();
+        saveGameBoard("y");
         //load modal
+        let checks = parseInt(document.querySelector('.counter__count').innerHTML);
+        generateImageWithNumber(checks);
         const statsModal = document.querySelector('.stats__modal');
         setupStatsModal();
         statsModal.showModal();
+        statsModal.querySelector(".share__container").classList.add("share__show");
         statsModal.addEventListener('click', function (e) {
             if (e.target === statsModal) {
                 statsModal.close();
             }
         });
+        document.getElementById('letter_container').removeEventListener("click", letterHandler);
+        document.querySelector(".check").removeEventListener("click", handleCheck);
+        //disable letters
+        //disable check button
+        return true;
     };
+    return false;
 }
 
 //check if the letters are in the correct row
@@ -260,7 +275,7 @@ checkCol = () => {
 }
 
 //store game board so it doesn't reset each load
-saveGameBoard = () => {
+saveGameBoard = (completeGame) => {
     let boardArray = document.getElementById('letterSection').innerHTML;
     localStorage.setItem('board_5words',
         JSON.stringify({
@@ -268,7 +283,8 @@ saveGameBoard = () => {
             date: new Date().toJSON().slice(0, 10),
             board: boardArray,
             counter: document.querySelector('.counter__count').innerHTML,
-            words: chosenWords
+            words: chosenWords,
+            complete: completeGame
         })
     );
 }

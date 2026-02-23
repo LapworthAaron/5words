@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/styles.css?v=1.02">
+    <link rel="stylesheet" href="./css/styles.css?v=1.05">
     <title>5WORDS</title>
     <link rel="shortcut icon" href="./assets/favicon.ico">
     <meta property="og:title" content="5WORDS – Daily 5‑Letter Word Puzzle Game | Free Online Word Challenge">
@@ -16,7 +16,21 @@
 </head>
 <body>
     <header>
-        <div class="howToPlay_icon">?</div>
+        <div class="hamburger" aria-expanded="false" aria-controls="nav">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <nav id="nav" class="nav">
+            <ul>
+                <li><div class="navlink howToPlay_icon">How To Play</a></li>
+                <li><div id="privacy" class="navlink">Privacy Policy</div></li>
+                <li><a class="navlink" href="https://ko-fi.com/albansoftware">Tip Me!</a></li>
+                <!-- <li><a class="navlink" href="#">About</a></li> -->
+            </ul>
+        </nav>
+
         <a href="/index.html" id="navTitle"><img class="header-logo" src="./assets/5words-logo.png" alt="5Words logo"></a>
         <h1 class="page_title hide">5Words</h1>
         <div class="stats_icon">
@@ -29,39 +43,39 @@
         <section id="letterSection" class="letter_game">
             <div id="letter_container" class="letter_container">
                 <div id="row_1" class="rows">
-                    <div class="letter_box" id="letter_1"></div>
-                    <div class="letter_box" id="letter_2"></div>
-                    <div class="letter_box" id="letter_3"></div>
-                    <div class="letter_box" id="letter_4"></div>
-                    <div class="letter_box" id="letter_5"></div>
+                    <div class="letter_box" id="letter_1">*</div>
+                    <div class="letter_box" id="letter_2">*</div>
+                    <div class="letter_box" id="letter_3">*</div>
+                    <div class="letter_box" id="letter_4">*</div>
+                    <div class="letter_box" id="letter_5">*</div>
                 </div>
                 <div id="row_2" class="rows">
-                    <div class="letter_box" id="letter_6"></div>
-                    <div class="letter_box" id="letter_7"></div>
-                    <div class="letter_box" id="letter_8"></div>
-                    <div class="letter_box" id="letter_9"></div>
-                    <div class="letter_box" id="letter_10"></div>
+                    <div class="letter_box" id="letter_6">5</div>
+                    <div class="letter_box" id="letter_7">w</div>
+                    <div class="letter_box" id="letter_8">o</div>
+                    <div class="letter_box" id="letter_9">r</div>
+                    <div class="letter_box" id="letter_10">d</div>
                 </div>
                 <div id="row_3" class="rows">
-                    <div class="letter_box" id="letter_11"></div>
-                    <div class="letter_box" id="letter_12"></div>
-                    <div class="letter_box" id="letter_13"></div>
-                    <div class="letter_box" id="letter_14"></div>
-                    <div class="letter_box" id="letter_15"></div>
+                    <div class="letter_box" id="letter_11">*</div>
+                    <div class="letter_box" id="letter_12">*</div>
+                    <div class="letter_box" id="letter_13">*</div>
+                    <div class="letter_box" id="letter_14">*</div>
+                    <div class="letter_box" id="letter_15">*</div>
                 </div>
                 <div id="row_4" class="rows">
-                    <div class="letter_box" id="letter_16"></div>
-                    <div class="letter_box" id="letter_17"></div>
-                    <div class="letter_box" id="letter_18"></div>
-                    <div class="letter_box" id="letter_19"></div>
-                    <div class="letter_box" id="letter_20"></div>
+                    <div class="letter_box" id="letter_16">5</div>
+                    <div class="letter_box" id="letter_17">w</div>
+                    <div class="letter_box" id="letter_18">o</div>
+                    <div class="letter_box" id="letter_19">r</div>
+                    <div class="letter_box" id="letter_20">d</div>
                 </div>
                 <div id="row_5" class="rows">
-                    <div class="letter_box" id="letter_21"></div>
-                    <div class="letter_box" id="letter_22"></div>
-                    <div class="letter_box" id="letter_23"></div>
-                    <div class="letter_box" id="letter_24"></div>
-                    <div class="letter_box" id="letter_25"></div>
+                    <div class="letter_box" id="letter_21">*</div>
+                    <div class="letter_box" id="letter_22">*</div>
+                    <div class="letter_box" id="letter_23">*</div>
+                    <div class="letter_box" id="letter_24">*</div>
+                    <div class="letter_box" id="letter_25">*</div>
                 </div>
             </div>
         </section>
@@ -105,6 +119,24 @@
                 </ul>
                 <p class="sub-section__copy">It’s a fun, fast, and rewarding way to keep your mind sharp every day.:</p>
                 <p class="sub-section__copy">Challenge yourself, beat your personal best, and share your streak with friends.</p>
+            </div>
+            <div class="sub-section">
+                <h3 class="sub-section__heading">Remember:</h3>
+                <p class="sub-section__copy">The squares will light up with 3 different colours to help guide you to the solution</p>
+                <ul class="howToPlay__colours-list">
+                    <li class="howToPlay__colours">
+                        <img class="howToPlay__image image-letter" src="./assets/green.png" alt="">
+                        <p class="howToPlay__copy"><strong><u>Green:</u></strong> This means you have the correct letter in the correct spot, do not move this anymore</p>
+                    </li>
+                    <li class="howToPlay__colours">
+                        <img class="howToPlay__image image-letter" src="./assets/orange.png" alt="">
+                        <p class="howToPlay__copy"><strong><u>Orange:</u></strong> This means you have a letter that is in the correct row, but not the correct column</p>
+                    </li>
+                    <li class="howToPlay__colours">
+                        <img class="howToPlay__image image-letter" src="./assets/pink.png" alt="">
+                        <p class="howToPlay__copy"><strong><u>Pink:</u></strong> This means you have a letter in the correct column, but not the correct row</p>
+                    </li>
+                </ul>
             </div>
 
         </section>
@@ -161,6 +193,11 @@
     <dialog class="stats__modal">
         <button class="button stats__close">X</button>
         <section>
+            <div class="share__container">
+                <img class="share__image" src="">
+                <p class="share__caption"></p>
+                <button id="share--button" class="button">Share</button>
+            </div>
             <div>
                 <h2 class="stats__title">Stats</h2>
                 <div class="stats__score-container">
@@ -185,7 +222,8 @@
                 </div>
 
                 <div class="stats_delete-container">
-                    <button class="button stats_delete">Delete Stats</button>
+                    <button class="button stats_btn_close">Close</button>
+                    <button class="button stats_btn_delete">Delete Stats</button>
                 </div>
             </div>
         </section>
@@ -235,8 +273,9 @@
         </section>
     </dialog>
 </body>
-<script src="./js/game.js?v=1.01"></script>
+<script src="./js/game.js?v=1.03"></script>
 <!-- <script src="./js/words.js"></script> -->
-<script src="./js/nav.js?v=1.02"></script>
+<script src="./js/nav.js?v=1.06"></script>
 <script src="./js/footer.js?v=1.01"></script>
+<script src="./js/share.js?v=1.01"></script>
 </html>
