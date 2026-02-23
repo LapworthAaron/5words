@@ -405,7 +405,7 @@ body:has(dialog[open]) {
 /* Score Area                 */
 /******************************/
 #scoreArea {
-    margin: 10px auto 50px;
+    margin: 10px auto 10px;
     padding: 0;
     max-width: 400px
 }
@@ -480,6 +480,15 @@ body:has(dialog[open]) {
 .sub-section__list-item {
     font-size: 16px;
     font-weight: 400;
+}
+
+/******************************/
+/* Ads                     */
+/******************************/
+.ads-banner {
+    width: 320px;
+    margin: 0 auto 20px;
+    padding-top: 10px;
 }
 
 /******************************/
