@@ -81,7 +81,7 @@ header {
     top: 100%; /* sits directly below header */
     left: 0;
     width: 30%;
-    background: rgba(255,255,255, 0.9);
+    background: var(--white);
     border: 3px solid var(--blue);
     height: max-content;
 
