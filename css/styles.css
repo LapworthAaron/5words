@@ -80,7 +80,7 @@ header {
     position: absolute;
     top: 100%; /* sits directly below header */
     left: 0;
-    width: 30%;
+    width: 35%;
     background: var(--white);
     border: 3px solid var(--blue);
     height: max-content;
@@ -198,7 +198,9 @@ main {
 /****************************************/
 .howToPlay__modal,
 .stats__modal,
-.privacy__modal {
+.privacy__modal,
+.terms__modal,
+.about__modal {
     position: fixed;
     top: 0;
     left: 0;
@@ -219,11 +221,14 @@ main {
 
 body:has(dialog[open]) {
   overflow: hidden;
+  padding-right: var(--scrollbar-width, 0px);
 }
 
 .howToPlay__close,
 .stats__close,
-.privacy__close {
+.privacy__close,
+.terms__close,
+.about__close {
     position: sticky;
     top: 0;
     left: 100%;
@@ -234,20 +239,26 @@ body:has(dialog[open]) {
 
 .howToPlay__title,
 .stats__title,
-.privacy__title {
+.privacy__title,
+.terms__title,
+.about__title {
     color: var(--white);
 }
 
 .howToPlay__subtitle,
 .stats__subtitle,
-.privacy__subtitle {
+.privacy__subtitle,
+.terms__subtitle,
+.about__subtitle {
     color: var(--white);
     text-decoration: underline;
 }
 
 .howToPlay__copy,
 .stats__copy,
-.privacy__copy {
+.privacy__copy,
+.terms__copy,
+.about__copy {
     color: var(--white);
     font-weight: 400;
     margin: 0;
@@ -459,10 +470,6 @@ body:has(dialog[open]) {
     color: var(--white);
 }
 
-.sub-section {
-    
-}
-
 .sub-section__heading {
     font-size: 20px;
     text-decoration: underline;
@@ -471,10 +478,6 @@ body:has(dialog[open]) {
 .sub-section__copy {
     font-size: 16px;
     font-weight: 400;
-}
-
-.sub-section__list {
-
 }
 
 .sub-section__list-item {

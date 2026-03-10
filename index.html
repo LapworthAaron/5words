@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/styles.css?v=1.07">
-    <title>5WORDS</title>
+    <title>5WORDS – Daily 5-Letter Word Puzzle Game | Free Online Word Challenge</title>
+    <meta name="description" content="Play 5WORDS, the free daily word puzzle. Rearrange a 5x5 grid to uncover five hidden words. Swap letters, use colour clues, and challenge your brain every day.">
     <link rel="shortcut icon" href="./assets/favicon.ico">
     <meta property="og:title" content="5WORDS – Daily 5‑Letter Word Puzzle Game | Free Online Word Challenge">
     <meta property="og:url" content="https://5words.co.uk">
@@ -25,10 +26,11 @@
 
         <nav id="nav" class="nav">
             <ul>
-                <li><div class="navlink howToPlay_icon">How To Play</a></li>
+                <li><div class="navlink howToPlay_icon">How To Play</div></li>
                 <li><div class="navlink privacy-link">Privacy Policy</div></li>
+                <li><div class="navlink terms-link">Terms of Service</div></li>
+                <li><div class="navlink about-link">About</div></li>
                 <li><a class="navlink" href="https://ko-fi.com/albansoftware">Buy Me a  Coffee</a></li>
-                <!-- <li><a class="navlink" href="#">About</a></li> -->
             </ul>
         </nav>
 
@@ -36,7 +38,7 @@
         <h1 class="page_title hide">5Words</h1>
         <div class="stats_icon">
             <figure>
-                <img id="stats" src="./assets/stats.svg" alt="">
+                <img id="stats" src="./assets/stats.svg" alt="View your game statistics">
             </figure>
         </div>
     </header>
@@ -89,6 +91,15 @@
             </div>
         </div>
         </section>
+        <div class="ads-banner">
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-6988631606998998"
+                data-ad-slot="auto"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
         <section id="infoArea">
             <div class="sub-section">
                 <h3 class="sub-section__heading">What Is 5WORDS?</h3>
@@ -101,8 +112,8 @@
                 <h3 class="sub-section__heading">Strategy Tips for Solving 5WORDS</h3>
                 <p class="sub-section__copy">Want to improve your score and reduce your number of checks?</p>
                 <ul class="sub-section__list">
-                    <li class="sub-section__list-item">Start by forming **common word patterns** (‑ING, ‑ATE, ‑ION, etc.).</li>
-                    <li class="sub-section__list-item">Look for **vowel placement** — most English words follow predictable vowel spacing.</li>
+                    <li class="sub-section__list-item">Start by forming <strong>common word patterns</strong> (‑ING, ‑ATE, ‑ION, etc.).</li>
+                    <li class="sub-section__list-item">Look for <strong>vowel placement</strong> — most English words follow predictable vowel spacing.</li>
                     <li class="sub-section__list-item">Make several swaps before checking to maximise efficiency.</li>
                     <li class="sub-section__list-item">Use the colour feedback to lock in greens early, then refine orange and pink tiles.</li>
                     <li class="sub-section__list-item">Try to solve each row independently, but remember that every swap affects the whole board.</li>
@@ -118,7 +129,7 @@
                     <li class="sub-section__list-item">Short‑term memory</li>
                     <li class="sub-section__list-item">Cognitive flexibility</li>
                 </ul>
-                <p class="sub-section__copy">It’s a fun, fast, and rewarding way to keep your mind sharp every day.:</p>
+                <p class="sub-section__copy">It’s a fun, fast, and rewarding way to keep your mind sharp every day.</p>
                 <p class="sub-section__copy">Challenge yourself, beat your personal best, and share your streak with friends.</p>
             </div>
             <div class="sub-section">
@@ -126,15 +137,15 @@
                 <p class="sub-section__copy">The squares will light up with 3 different colours to help guide you to the solution</p>
                 <ul class="howToPlay__colours-list">
                     <li class="howToPlay__colours">
-                        <img class="howToPlay__image image-letter" src="./assets/green.png" alt="" loading="lazy">
+                        <img class="howToPlay__image image-letter" src="./assets/green.png" alt="Green tile indicating correct letter position" loading="lazy">
                         <p class="howToPlay__copy"><strong><u>Green:</u></strong> This means you have the correct letter in the correct spot, do not move this anymore</p>
                     </li>
                     <li class="howToPlay__colours">
-                        <img class="howToPlay__image image-letter" src="./assets/orange.png" alt="" loading="lazy">
+                        <img class="howToPlay__image image-letter" src="./assets/orange.png" alt="Orange tile indicating correct row wrong column" loading="lazy">
                         <p class="howToPlay__copy"><strong><u>Orange:</u></strong> This means you have a letter that is in the correct row, but not the correct column</p>
                     </li>
                     <li class="howToPlay__colours">
-                        <img class="howToPlay__image image-letter" src="./assets/pink.png" alt="" loading="lazy">
+                        <img class="howToPlay__image image-letter" src="./assets/pink.png" alt="Pink tile indicating correct column wrong row" loading="lazy">
                         <p class="howToPlay__copy"><strong><u>Pink:</u></strong> This means you have a letter in the correct column, but not the correct row</p>
                     </li>
                 </ul>
@@ -154,31 +165,31 @@
                 <p class="howToPlay__copy">The game board is made up of 25 squares, formed into a 5 x 5 grid.</p>
                 
                 <div class="howToPlay__image-container">
-                    <img class="howToPlay__image emptyBoard" src="./assets/gameboard.png" alt="" loading="lazy">
+                    <img class="howToPlay__image emptyBoard" src="./assets/gameboard.png" alt="Empty 5x5 game board grid" loading="lazy">
                 </div>
                 <h3 class="howToPlay__subtitle">How:</h3>
                 <p class="howToPlay__copy">Swap letters by clicking/pressing on 2 letters you want to swap (one after another)</p>
                 <div class="howToPlay__image-container">
-                    <img class="howToPlay__image checkBoard" src="./assets/swap-letters.gif" alt="" loading="lazy">
+                    <img class="howToPlay__image checkBoard" src="./assets/swap-letters.gif" alt="Animation showing how to swap letters on the board" loading="lazy">
                 </div>
                 <h3 class="howToPlay__subtitle">How do i know if it's correct?:</h3>
                 <p class="howToPlay__copy">Click the check button when you are happy with how the board is looking. It should end up looking something like below.</p>
                 <div class="howToPlay__image-container">
-                    <img class="howToPlay__image checkBoard" src="./assets/checkboard.png" alt="" loading="lazy">
+                    <img class="howToPlay__image checkBoard" src="./assets/checkboard.png" alt="Example of a checked board with colour feedback" loading="lazy">
                 </div>
                 <h3 class="howToPlay__subtitle">What next?:</h3>
                 <p class="howToPlay__copy">The squares will light up with 3 different colours to help guide you to the solution</p>
                 <ul class="howToPlay__colours-list">
                     <li class="howToPlay__colours">
-                        <img class="howToPlay__image image-letter" src="./assets/green.png" alt="" loading="lazy">
+                        <img class="howToPlay__image image-letter" src="./assets/green.png" alt="Green tile indicating correct letter position" loading="lazy">
                         <p class="howToPlay__copy"><strong><u>Green:</u></strong> This means you have the correct letter in the correct spot, do not move this anymore</p>
                     </li>
                     <li class="howToPlay__colours">
-                        <img class="howToPlay__image image-letter" src="./assets/orange.png" alt="" loading="lazy">
+                        <img class="howToPlay__image image-letter" src="./assets/orange.png" alt="Orange tile indicating correct row wrong column" loading="lazy">
                         <p class="howToPlay__copy"><strong><u>Orange:</u></strong> This means you have a letter that is in the correct row, but not the correct column</p>
                     </li>
                     <li class="howToPlay__colours">
-                        <img class="howToPlay__image image-letter" src="./assets/pink.png" alt="" loading="lazy">
+                        <img class="howToPlay__image image-letter" src="./assets/pink.png" alt="Pink tile indicating correct column wrong row" loading="lazy">
                         <p class="howToPlay__copy"><strong><u>Pink:</u></strong> This means you have a letter in the correct column, but not the correct row</p>
                     </li>
                 </ul>
@@ -230,9 +241,20 @@
         </section>
     </dialog>
     
+    <div class="ads-banner">
+        <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-6988631606998998"
+            data-ad-slot="auto"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
     <footer>
         <section class="footer__link-container">
             <div class="footer_link privacy-link">Privacy Policy</div>
+            <div class="footer_link terms-link">Terms of Service</div>
+            <div class="footer_link about-link">About</div>
             <a class="footer_link" href="mailto:albansoftware@gmail.com">Contact Us</a>
         </section>
     </footer>
@@ -242,7 +264,7 @@
             <div>
                 <h2 class="privacy__title">Privacy Policy</h2>
                 <br><p class="privacy__copy">Effective Date: 24th October 2025</p>
-                <br><p class="privacy__copy">This Privacy Policy explains how we collect, use, and protect your information when you visit [Your Website Name] ("we", "our", or "us"). By using our website, you agree to the terms outlined below.</p>
+                <br><p class="privacy__copy">This Privacy Policy explains how we collect, use, and protect your information when you visit 5WORDS (5words.co.uk) ("we", "our", or "us"). By using our website, you agree to the terms outlined below.</p>
                 <br><h3 class="privacy__copy">1. Information We Collect</h3>
                 <p class="privacy__copy">We may collect the following types of information:</p>
                 <p class="privacy__copy">- Personal Information: Name, email address, or other contact details if you submit them via forms.</p>
@@ -269,7 +291,52 @@
                 <p class="privacy__copy">We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated effective date.</p>
                 <br><h3 class="privacy__copy">7. Contact Us</h3>
                 <p class="privacy__copy">If you have questions about this Privacy Policy, please contact us at: Email: albansoftware@gmail.com</p>
-                <br><p class="privacy__copy">Website: 5words.co.ok</p>
+                <br><p class="privacy__copy">Website: 5words.co.uk</p>
+            </div>
+        </section>
+    </dialog>
+    <dialog class="terms__modal">
+        <button class="button terms__close">X</button>
+        <section>
+            <div>
+                <h2 class="terms__title">Terms of Service</h2>
+                <br><p class="terms__copy">Effective Date: 24th October 2025</p>
+                <br><p class="terms__copy">Welcome to 5WORDS (5words.co.uk). By accessing or using this website, you agree to be bound by these Terms of Service. If you do not agree with any part of these terms, please do not use the website.</p>
+                <br><h3 class="terms__copy">1. Use of the Service</h3>
+                <p class="terms__copy">5WORDS is a free online daily word puzzle game. You may use the website for personal, non-commercial purposes only. You agree not to misuse the service, attempt to disrupt its operation, or use automated tools to access it.</p>
+                <br><h3 class="terms__copy">2. Intellectual Property</h3>
+                <p class="terms__copy">All content on this website, including but not limited to text, graphics, logos, images, and software, is the property of 5WORDS and is protected by applicable intellectual property laws. You may not reproduce, distribute, or create derivative works without prior written permission.</p>
+                <br><h3 class="terms__copy">3. User Conduct</h3>
+                <p class="terms__copy">You agree to use 5WORDS responsibly and in accordance with all applicable laws. You must not use the website to transmit harmful, offensive, or unlawful content, or to engage in any activity that could damage the website or its users.</p>
+                <br><h3 class="terms__copy">4. Cookies and Advertising</h3>
+                <p class="terms__copy">This website uses cookies and displays advertisements through Google AdSense. By using the website, you consent to the use of cookies as described in our Privacy Policy. Third-party advertisers may also use cookies to serve personalised ads.</p>
+                <br><h3 class="terms__copy">5. Disclaimer of Warranties</h3>
+                <p class="terms__copy">5WORDS is provided on an "as is" and "as available" basis. We make no warranties, expressed or implied, regarding the reliability, accuracy, or availability of the website. We do not guarantee that the service will be uninterrupted or error-free.</p>
+                <br><h3 class="terms__copy">6. Limitation of Liability</h3>
+                <p class="terms__copy">To the fullest extent permitted by law, 5WORDS and its creators shall not be liable for any indirect, incidental, or consequential damages arising from your use of the website.</p>
+                <br><h3 class="terms__copy">7. Changes to These Terms</h3>
+                <p class="terms__copy">We reserve the right to update these Terms of Service at any time. Changes will be posted on this page with an updated effective date. Continued use of the website after changes constitutes acceptance of the revised terms.</p>
+                <br><h3 class="terms__copy">8. Contact Us</h3>
+                <p class="terms__copy">If you have questions about these Terms of Service, please contact us at: Email: albansoftware@gmail.com</p>
+                <br><p class="terms__copy">Website: 5words.co.uk</p>
+            </div>
+        </section>
+    </dialog>
+    <dialog class="about__modal">
+        <button class="button about__close">X</button>
+        <section>
+            <div>
+                <h2 class="about__title">About 5WORDS</h2>
+                <br><p class="about__copy">5WORDS is a free daily word puzzle game created by Alban Software. Each day, a new puzzle is generated featuring five hidden five-letter words scrambled across a 5x5 grid.</p>
+                <br><p class="about__copy">Your challenge is to swap letters across the board until every row contains a valid English word. Colour-coded clues guide you towards the solution: green means a letter is in the right spot, orange means right row but wrong column, and pink means right column but wrong row.</p>
+                <br><h3 class="about__copy">Our Mission</h3>
+                <p class="about__copy">We built 5WORDS to offer a fun, quick daily brain exercise that anyone can enjoy. Whether you are a word game enthusiast or just looking for a few minutes of mental stimulation, 5WORDS is designed to challenge and entertain.</p>
+                <br><h3 class="about__copy">How It Works</h3>
+                <p class="about__copy">A fresh puzzle is available every day. Your progress, stats, and streaks are saved locally in your browser so you can track your improvement over time. Share your results with friends and see who can solve the puzzle in fewer checks.</p>
+                <br><h3 class="about__copy">Contact</h3>
+                <p class="about__copy">Have feedback, questions, or suggestions? We would love to hear from you.</p>
+                <p class="about__copy">Email: <a href="mailto:albansoftware@gmail.com" style="color: var(--blue);">albansoftware@gmail.com</a></p>
+                <br><p class="about__copy">Website: 5words.co.uk</p>
             </div>
         </section>
     </dialog>
