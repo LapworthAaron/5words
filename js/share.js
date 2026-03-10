@@ -77,7 +77,7 @@ async function createImageWithNumber(number) {
 
     const imgEl = document.querySelector(".share__image");
     imgEl.src = canvas.toDataURL("image/png");
-    document.querySelector(".share__caption").innerHTML = `You have completed today's challenge, congratulations! You did it in ${number} checks.`
+    document.querySelector(".share__caption").textContent = `You have completed today's challenge, congratulations! You did it in ${number} checks.`
 
     return canvas;
 }
@@ -87,10 +87,17 @@ async function canvasToFile(canvas, filename = "shared.png") {
     return new File([blob], filename, { type: "image/png" });
 }
 
+let generatedFile = null;
+let generatedNumber = null;
+let imageReadyResolve = null;
+let imageReadyPromise = null;
+
 async function generateImageWithNumber(number) {
+    imageReadyPromise = new Promise(resolve => { imageReadyResolve = resolve; });
     const canvas = await createImageWithNumber(number);
     generatedFile = await canvasToFile(canvas);
     generatedNumber = number;
+    imageReadyResolve();
 }
 
 async function shareImageWithNumber(image, number) {
@@ -111,9 +118,7 @@ const shareBtn = document.getElementById('share--button');
 shareBtn.addEventListener('click', async (e) => {
     e.preventDefault();
     e.stopPropagation();
-    while (!generatedFile) {
-        await new Promise(r => setTimeout(r, 50));
-    }
+    if (imageReadyPromise) await imageReadyPromise;
 
     shareImageWithNumber(generatedFile, generatedNumber);
 });

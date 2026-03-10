@@ -24,7 +24,7 @@
         <nav id="nav" class="nav">
             <ul>
                 <li><div class="navlink howToPlay_icon">How To Play</a></li>
-                <li><div id="privacy" class="navlink">Privacy Policy</div></li>
+                <li><div class="navlink privacy-link">Privacy Policy</div></li>
                 <li><a class="navlink" href="https://ko-fi.com/albansoftware">Buy Me a  Coffee</a></li>
                 <!-- <li><a class="navlink" href="#">About</a></li> -->
             </ul>
@@ -87,18 +87,6 @@
             </div>
         </div>
         </section>
-        <section class="ads-banner">
-            <script>
-                atOptions = {
-                    'key' : 'e695c50db23f0bd0fd846d1ea3fa000c',
-                    'format' : 'iframe',
-                    'height' : 50,
-                    'width' : 320,
-                    'params' : {}
-                };
-                </script>
-                <script src="https://www.highperformanceformat.com/e695c50db23f0bd0fd846d1ea3fa000c/invoke.js"></script>
-        </section>
         <section id="infoArea">
             <div class="sub-section">
                 <h3 class="sub-section__heading">What Is 5WORDS?</h3>
@@ -136,15 +124,15 @@
                 <p class="sub-section__copy">The squares will light up with 3 different colours to help guide you to the solution</p>
                 <ul class="howToPlay__colours-list">
                     <li class="howToPlay__colours">
-                        <img class="howToPlay__image image-letter" src="./assets/green.png" alt="">
+                        <img class="howToPlay__image image-letter" src="./assets/green.png" alt="" loading="lazy">
                         <p class="howToPlay__copy"><strong><u>Green:</u></strong> This means you have the correct letter in the correct spot, do not move this anymore</p>
                     </li>
                     <li class="howToPlay__colours">
-                        <img class="howToPlay__image image-letter" src="./assets/orange.png" alt="">
+                        <img class="howToPlay__image image-letter" src="./assets/orange.png" alt="" loading="lazy">
                         <p class="howToPlay__copy"><strong><u>Orange:</u></strong> This means you have a letter that is in the correct row, but not the correct column</p>
                     </li>
                     <li class="howToPlay__colours">
-                        <img class="howToPlay__image image-letter" src="./assets/pink.png" alt="">
+                        <img class="howToPlay__image image-letter" src="./assets/pink.png" alt="" loading="lazy">
                         <p class="howToPlay__copy"><strong><u>Pink:</u></strong> This means you have a letter in the correct column, but not the correct row</p>
                     </li>
                 </ul>
@@ -164,31 +152,31 @@
                 <p class="howToPlay__copy">The game board is made up of 25 squares, formed into a 5 x 5 grid.</p>
                 
                 <div class="howToPlay__image-container">
-                    <img class="howToPlay__image emptyBoard" src="./assets/gameboard.png" alt="">
+                    <img class="howToPlay__image emptyBoard" src="./assets/gameboard.png" alt="" loading="lazy">
                 </div>
                 <h3 class="howToPlay__subtitle">How:</h3>
                 <p class="howToPlay__copy">Swap letters by clicking/pressing on 2 letters you want to swap (one after another)</p>
                 <div class="howToPlay__image-container">
-                    <img class="howToPlay__image checkBoard" src="./assets/swap-letters.gif" alt="">
+                    <img class="howToPlay__image checkBoard" src="./assets/swap-letters.gif" alt="" loading="lazy">
                 </div>
                 <h3 class="howToPlay__subtitle">How do i know if it's correct?:</h3>
                 <p class="howToPlay__copy">Click the check button when you are happy with how the board is looking. It should end up looking something like below.</p>
                 <div class="howToPlay__image-container">
-                    <img class="howToPlay__image checkBoard" src="./assets/checkboard.png" alt="">
+                    <img class="howToPlay__image checkBoard" src="./assets/checkboard.png" alt="" loading="lazy">
                 </div>
                 <h3 class="howToPlay__subtitle">What next?:</h3>
                 <p class="howToPlay__copy">The squares will light up with 3 different colours to help guide you to the solution</p>
                 <ul class="howToPlay__colours-list">
                     <li class="howToPlay__colours">
-                        <img class="howToPlay__image image-letter" src="./assets/green.png" alt="">
+                        <img class="howToPlay__image image-letter" src="./assets/green.png" alt="" loading="lazy">
                         <p class="howToPlay__copy"><strong><u>Green:</u></strong> This means you have the correct letter in the correct spot, do not move this anymore</p>
                     </li>
                     <li class="howToPlay__colours">
-                        <img class="howToPlay__image image-letter" src="./assets/orange.png" alt="">
+                        <img class="howToPlay__image image-letter" src="./assets/orange.png" alt="" loading="lazy">
                         <p class="howToPlay__copy"><strong><u>Orange:</u></strong> This means you have a letter that is in the correct row, but not the correct column</p>
                     </li>
                     <li class="howToPlay__colours">
-                        <img class="howToPlay__image image-letter" src="./assets/pink.png" alt="">
+                        <img class="howToPlay__image image-letter" src="./assets/pink.png" alt="" loading="lazy">
                         <p class="howToPlay__copy"><strong><u>Pink:</u></strong> This means you have a letter in the correct column, but not the correct row</p>
                     </li>
                 </ul>
@@ -242,7 +230,7 @@
     
     <footer>
         <section class="footer__link-container">
-            <div id="privacy" class="footer_link">Privacy Policy</div>
+            <div class="footer_link privacy-link">Privacy Policy</div>
             <a class="footer_link" href="mailto:albansoftware@gmail.com">Contact Us</a>
         </section>
     </footer>
@@ -283,10 +271,10 @@
             </div>
         </section>
     </dialog>
+    <script src="./js/game.js?v=1.04" defer></script>
+    <!-- <script src="./js/words.js"></script> -->
+    <script src="./js/nav.js?v=1.07" defer></script>
+    <script src="./js/footer.js?v=1.02" defer></script>
+    <script src="./js/share.js?v=1.02" defer></script>
 </body>
-<script src="./js/game.js?v=1.03"></script>
-<!-- <script src="./js/words.js"></script> -->
-<script src="./js/nav.js?v=1.06"></script>
-<script src="./js/footer.js?v=1.01"></script>
-<script src="./js/share.js?v=1.01"></script>
 </html>

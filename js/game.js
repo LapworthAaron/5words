@@ -6,9 +6,13 @@ let checkArray = [];
 let currentGame = 0;
 let latestGame = 0;
 let liveGame = 0;
+let counterEl = null;
+let checkBtn = null;
 
 // getData(word_file);
 document.addEventListener("DOMContentLoaded", async () => {
+    counterEl = document.querySelector('.counter__count');
+    checkBtn = document.querySelector(".check");
     const daily = await dailyWords();
     latestGame = daily.gameId;
 
@@ -39,7 +43,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
     //event listener for check button
-    document.querySelector(".check").addEventListener("click", handleCheck);
+    checkBtn.addEventListener("click", handleCheck);
 });
 
 //non api based random words game - practice mode?
@@ -97,7 +101,7 @@ initialiseLetterClick = () => {
 updateHTML = (letters) => {
     for (let i=0; i < 25; i++) {
         let letterHtml = document.getElementById(`letter_${i+1}`);
-        letterHtml.innerHTML = letters[i];
+        letterHtml.textContent = letters[i];
     }
     initialiseLetterClick();
 }
@@ -130,9 +134,9 @@ swapLetters = (event) => {
         swapLettersClasses(firstSelect, 'correctRow');
         swapLettersClasses(firstSelect, 'correctCol');
         //swap text values
-        let buffer = lastSelect.innerHTML;
-        lastSelect.innerHTML = firstSelect.innerHTML;
-        firstSelect.innerHTML = buffer;
+        let buffer = lastSelect.textContent;
+        lastSelect.textContent = firstSelect.textContent;
+        firstSelect.textContent = buffer;
         //remove selected classes
         firstSelect.classList.remove('selected');
         setTimeout(() => {
@@ -155,8 +159,8 @@ swapLettersClasses = (obj, className) => {
 check = (counter) => {
     //update counter if counter is true
     if (counter) {
-        let count = document.querySelector('.counter__count').innerHTML;
-        document.querySelector('.counter__count').innerHTML = Number(count) + 1;
+        let count = counterEl.textContent;
+        counterEl.textContent = Number(count) + 1;
     }
 
     checkArray = [];
@@ -201,19 +205,14 @@ checkWin = () => {
         //save board status
         saveGameBoard("y");
         //load modal
-        let checks = parseInt(document.querySelector('.counter__count').innerHTML);
+        let checks = parseInt(counterEl.textContent);
         generateImageWithNumber(checks);
         const statsModal = document.querySelector('.stats__modal');
         setupStatsModal();
         statsModal.showModal();
         statsModal.querySelector(".share__container").classList.add("share__show");
-        statsModal.addEventListener('click', function (e) {
-            if (e.target === statsModal) {
-                statsModal.close();
-            }
-        });
         document.getElementById('letter_container').removeEventListener("click", letterHandler);
-        document.querySelector(".check").removeEventListener("click", handleCheck);
+        checkBtn.removeEventListener("click", handleCheck);
         //disable letters
         //disable check button
         return true;
@@ -229,7 +228,7 @@ checkRow = (word, index) => {
     //check for correct letters
     //console.log('check for correct letter')
     for (let i = 0; i < 5; i++) {
-        if (row[i].innerHTML === tempWord[i]) {
+        if (row[i].textContent === tempWord[i]) {
             row[i].classList.add('correct');
             tempword2 = tempWord.split('');
             tempword2[i] = " ";
@@ -239,10 +238,10 @@ checkRow = (word, index) => {
     //check for correct row, but wrong column
     //console.log('check for correct row')
     for (let i = 0; i < 5; i++) {
-        if (row[i].innerHTML !== tempWord[i] && tempWord.includes(row[i].innerHTML) && !row[i].classList.contains('correct')) {
+        if (row[i].textContent !== tempWord[i] && tempWord.includes(row[i].textContent) && !row[i].classList.contains('correct')) {
             row[i].classList.add('correctRow');
-            tempword2 = JSON.parse(JSON.stringify(tempWord.replace(row[i].innerHTML," ")));
-            tempWord = JSON.parse(JSON.stringify(tempword2));
+            tempWord = tempWord.replace(row[i].textContent, " ");
+
         }
     }
     checkArray.push(tempWord);
@@ -259,7 +258,7 @@ checkCol = () => {
             if (!letter.classList.contains('correct') &&
             !letter.classList.contains('correctRow')) {
                 for (let k = 0; k < checkArray[i].length; k++) {
-                    if (checkArray[k][i].toUpperCase() === letter.innerHTML) {
+                    if (checkArray[k][i].toUpperCase() === letter.textContent) {
                         letter.classList.add('correctCol');
                         let str = checkArray[k];               // a string
                         let charArray = str.split('');             // convert to array of characters
@@ -282,7 +281,7 @@ saveGameBoard = (completeGame) => {
             id: liveGame,
             date: new Date().toJSON().slice(0, 10),
             board: boardArray,
-            counter: document.querySelector('.counter__count').innerHTML,
+            counter: counterEl.textContent,
             words: chosenWords,
             complete: completeGame
         })
@@ -294,7 +293,7 @@ loadGameBoard = () => {
     const boardArray = JSON.parse(localStorage.getItem('board_5words'));
     document.getElementById('letterSection').innerHTML = boardArray.board;
     chosenWords = boardArray.words;
-    document.querySelector('.counter__count').innerHTML = boardArray.counter;
+    counterEl.textContent = boardArray.counter;
     initialiseLetterClick();
 }
 
