@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/styles.css?v=1.09">
+    <title>How To Play | 5WORDS</title>
+    <meta name="description" content="Learn how to play 5WORDS: swap letters across a 5x5 grid, use the green, orange and pink colour clues, and uncover five hidden words each day.">
+    <link rel="canonical" href="https://5words.co.uk/how-to-play.html">
+    <link rel="shortcut icon" href="./assets/favicon.ico">
+</head>
+<body>
+    <header>
+        <div class="hamburger" aria-expanded="false" aria-controls="nav">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <nav id="nav" class="nav">
+            <ul>
+                <li><a class="navlink" href="/">Today's Game</a></li>
+                <li><a class="navlink" href="/how-to-play.html">How To Play</a></li>
+                <li><a class="navlink" href="/privacy-policy.html">Privacy Policy</a></li>
+                <li><a class="navlink" href="/terms.html">Terms of Service</a></li>
+                <li><a class="navlink" href="/about.html">About</a></li>
+                <li><a class="navlink" href="https://ko-fi.com/albansoftware">Buy Me a  Coffee</a></li>
+            </ul>
+        </nav>
+
+        <a href="/" id="navTitle"><img class="header-logo" src="./assets/5words-logo.png" alt="5Words logo"></a>
+        <div class="stats_icon">
+            <figure>
+                <img id="stats" src="./assets/stats.svg" alt="View your game statistics">
+            </figure>
+        </div>
+    </header>
+    <main class="legal-page">
+        <h1 class="howToPlay__title">How to play</h1>
+        <h2 class="howToPlay__subtitle">Aim of the game:</h2>
+        <p class="howToPlay__copy">Unscramble the 5 words that are hidden on the board. Each <u>row</u> should contain a valid 5 letter word. You will have to swap letters across the rows and columns to find all five words.</p>
+        <h2 class="howToPlay__subtitle">Board:</h2>
+        <p class="howToPlay__copy">The game board is made up of 25 squares, formed into a 5 x 5 grid.</p>
+
+        <div class="howToPlay__image-container">
+            <img class="howToPlay__image emptyBoard" src="./assets/gameboard.png" alt="Empty 5x5 game board grid" loading="lazy">
+        </div>
+        <h2 class="howToPlay__subtitle">How:</h2>
+        <p class="howToPlay__copy">Swap letters by clicking/pressing on 2 letters you want to swap (one after another)</p>
+        <div class="howToPlay__image-container">
+            <img class="howToPlay__image checkBoard" src="./assets/swap-letters.gif" alt="Animation showing how to swap letters on the board" loading="lazy">
+        </div>
+        <h2 class="howToPlay__subtitle">How do i know if it's correct?:</h2>
+        <p class="howToPlay__copy">Click the check button when you are happy with how the board is looking. It should end up looking something like below.</p>
+        <div class="howToPlay__image-container">
+            <img class="howToPlay__image checkBoard" src="./assets/checkboard.png" alt="Example of a checked board with colour feedback" loading="lazy">
+        </div>
+        <h2 class="howToPlay__subtitle">What next?:</h2>
+        <p class="howToPlay__copy">The squares will light up with 3 different colours to help guide you to the solution</p>
+        <ul class="howToPlay__colours-list">
+            <li class="howToPlay__colours">
+                <img class="howToPlay__image image-letter" src="./assets/green.png" alt="Green tile indicating correct letter position" loading="lazy">
+                <p class="howToPlay__copy"><strong><u>Green:</u></strong> This means you have the correct letter in the correct spot, do not move this anymore</p>
+            </li>
+            <li class="howToPlay__colours">
+                <img class="howToPlay__image image-letter" src="./assets/orange.png" alt="Orange tile indicating correct row wrong column" loading="lazy">
+                <p class="howToPlay__copy"><strong><u>Orange:</u></strong> This means you have a letter that is in the correct row, but not the correct column</p>
+            </li>
+            <li class="howToPlay__colours">
+                <img class="howToPlay__image image-letter" src="./assets/pink.png" alt="Pink tile indicating correct column wrong row" loading="lazy">
+                <p class="howToPlay__copy"><strong><u>Pink:</u></strong> This means you have a letter in the correct column, but not the correct row</p>
+            </li>
+        </ul>
+        <h2 class="howToPlay__subtitle">Tips:</h2>
+        <ul class="howToPlay__tips">
+            <li class="howToPlay__copy">The order of checking is for correctly positioned letters (Green), then correct row but incorrect column (Orange) and finally the correct column but incorrect row (Pink). So take care!</li>
+            <li class="howToPlay__copy">Try to make as many letter swaps as you feel comfortable doing inbetween each check, this will minimise checks and make you look like a Pro</li>
+            <li class="howToPlay__copy">Each word has to be in the correct row, but the check validation will help with that</li>
+        </ul>
+    </main>
+    <footer>
+        <section class="footer__link-container">
+            <a class="footer_link privacy-link" href="/privacy-policy.html">Privacy Policy</a>
+            <a class="footer_link" href="/terms.html">Terms of Service</a>
+            <a class="footer_link" href="/about.html">About</a>
+            <a class="footer_link" href="mailto:albansoftware@gmail.com">Contact Us</a>
+        </section>
+    </footer>
+    <dialog class="stats__modal">
+        <button class="button stats__close">X</button>
+        <section>
+            <div class="share__container">
+                <img class="share__image" src="">
+                <p class="share__caption"></p>
+                <button id="share--button" class="button">Share</button>
+            </div>
+            <div>
+                <h2 class="stats__title">Stats</h2>
+                <div class="stats__score-container">
+                    <p class="stats__copy">Played: </p>
+                    <p class="stats__copy played"></p>
+                </div>
+                <div class="stats__score-container">
+                    <p class="stats__copy">Completed: </p>
+                    <p class="stats__copy completed"></p>
+                </div>
+                <div class="stats__score-container">
+                    <p class="stats__copy">Current Streak: </p>
+                    <p class="stats__copy current_streak"></p>
+                </div>
+                <div class="stats__score-container">
+                    <p class="stats__copy">Best game (checks): </p>
+                    <p class="stats__copy checks"></p>
+                </div>
+                <div class="stats__score-container">
+                    <p class="stats__copy">Best Streak: </p>
+                    <p class="stats__copy best_streak"></p>
+                </div>
+
+                <div class="stats_delete-container">
+                    <button class="button stats_btn_close">Close</button>
+                    <button class="button stats_btn_delete">Delete Stats</button>
+                </div>
+            </div>
+        </section>
+    </dialog>
+    <script src="./js/nav.js?v=1.09" defer></script>
+    <script src="./js/footer.js?v=1.04" defer></script>
+    <script src="./js/share.js?v=1.04" defer></script>
+</body>
+</html>

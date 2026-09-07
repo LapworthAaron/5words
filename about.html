@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/styles.css?v=1.09">
+    <title>About | 5WORDS</title>
+    <meta name="description" content="About 5WORDS, the free daily 5-letter word puzzle game created by Alban Software. Learn about the game and how it works.">
+    <link rel="canonical" href="https://5words.co.uk/about.html">
+    <link rel="shortcut icon" href="./assets/favicon.ico">
+</head>
+<body>
+    <header>
+        <div class="hamburger" aria-expanded="false" aria-controls="nav">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <nav id="nav" class="nav">
+            <ul>
+                <li><a class="navlink" href="/">Today's Game</a></li>
+                <li><a class="navlink" href="/how-to-play.html">How To Play</a></li>
+                <li><a class="navlink" href="/privacy-policy.html">Privacy Policy</a></li>
+                <li><a class="navlink" href="/terms.html">Terms of Service</a></li>
+                <li><a class="navlink" href="/about.html">About</a></li>
+                <li><a class="navlink" href="https://ko-fi.com/albansoftware">Buy Me a  Coffee</a></li>
+            </ul>
+        </nav>
+
+        <a href="/" id="navTitle"><img class="header-logo" src="./assets/5words-logo.png" alt="5Words logo"></a>
+        <div class="stats_icon">
+            <figure>
+                <img id="stats" src="./assets/stats.svg" alt="View your game statistics">
+            </figure>
+        </div>
+    </header>
+    <main class="legal-page">
+        <h1 class="about__title">About 5WORDS</h1>
+        <br><p class="about__copy">5WORDS is a free daily word puzzle game created by Alban Software. Each day, a new puzzle is generated featuring five hidden five-letter words scrambled across a 5x5 grid.</p>
+        <br><p class="about__copy">Your challenge is to swap letters across the board until every row contains a valid English word. Colour-coded clues guide you towards the solution: green means a letter is in the right spot, orange means right row but wrong column, and pink means right column but wrong row.</p>
+        <br><h2 class="about__subtitle">Our Mission</h2>
+        <p class="about__copy">We built 5WORDS to offer a fun, quick daily brain exercise that anyone can enjoy. Whether you are a word game enthusiast or just looking for a few minutes of mental stimulation, 5WORDS is designed to challenge and entertain.</p>
+        <br><h2 class="about__subtitle">How It Works</h2>
+        <p class="about__copy">A fresh puzzle is available every day. Your progress, stats, and streaks are saved locally in your browser so you can track your improvement over time. Share your results with friends and see who can solve the puzzle in fewer checks.</p>
+        <br><h2 class="about__subtitle">Contact</h2>
+        <p class="about__copy">Have feedback, questions, or suggestions? We would love to hear from you.</p>
+        <p class="about__copy">Email: <a href="mailto:albansoftware@gmail.com" style="color: var(--blue);">albansoftware@gmail.com</a></p>
+        <br><p class="about__copy">Website: 5words.co.uk</p>
+    </main>
+    <footer>
+        <section class="footer__link-container">
+            <a class="footer_link privacy-link" href="/privacy-policy.html">Privacy Policy</a>
+            <a class="footer_link" href="/terms.html">Terms of Service</a>
+            <a class="footer_link" href="/about.html">About</a>
+            <a class="footer_link" href="mailto:albansoftware@gmail.com">Contact Us</a>
+        </section>
+    </footer>
+    <dialog class="stats__modal">
+        <button class="button stats__close">X</button>
+        <section>
+            <div class="share__container">
+                <img class="share__image" src="">
+                <p class="share__caption"></p>
+                <button id="share--button" class="button">Share</button>
+            </div>
+            <div>
+                <h2 class="stats__title">Stats</h2>
+                <div class="stats__score-container">
+                    <p class="stats__copy">Played: </p>
+                    <p class="stats__copy played"></p>
+                </div>
+                <div class="stats__score-container">
+                    <p class="stats__copy">Completed: </p>
+                    <p class="stats__copy completed"></p>
+                </div>
+                <div class="stats__score-container">
+                    <p class="stats__copy">Current Streak: </p>
+                    <p class="stats__copy current_streak"></p>
+                </div>
+                <div class="stats__score-container">
+                    <p class="stats__copy">Best game (checks): </p>
+                    <p class="stats__copy checks"></p>
+                </div>
+                <div class="stats__score-container">
+                    <p class="stats__copy">Best Streak: </p>
+                    <p class="stats__copy best_streak"></p>
+                </div>
+
+                <div class="stats_delete-container">
+                    <button class="button stats_btn_close">Close</button>
+                    <button class="button stats_btn_delete">Delete Stats</button>
+                </div>
+            </div>
+        </section>
+    </dialog>
+    <script src="./js/nav.js?v=1.09" defer></script>
+    <script src="./js/footer.js?v=1.04" defer></script>
+    <script src="./js/share.js?v=1.04" defer></script>
+</body>
+</html>

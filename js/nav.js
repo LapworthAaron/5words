@@ -27,26 +27,7 @@ document.addEventListener("DOMContentLoaded", function() {
             nav.classList.remove('open');
         }
     });
-    
-    const HTPmodal = document.querySelector('.howToPlay__modal');
-    const howToPlay__icon = document.querySelector('.howToPlay_icon');
 
-    HTPmodal.addEventListener('click', function (e) {
-        if (e.target === HTPmodal) {
-            HTPmodal.close();
-        }
-    });
-
-    howToPlay__icon.addEventListener("click", () => {
-        HTPmodal.showModal();
-    });
-
-    const howToPlay_close = document.querySelector('.howToPlay__close');
-    howToPlay_close.addEventListener("click", () => {
-        HTPmodal.close();
-    });
-
-        
     const statsModal = document.querySelector('.stats__modal');
     const stats__icon = document.querySelector('#stats');
 

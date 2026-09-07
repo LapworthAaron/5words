@@ -115,10 +115,12 @@ async function shareImageWithNumber(image, number) {
 }
 
 const shareBtn = document.getElementById('share--button');
-shareBtn.addEventListener('click', async (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    if (imageReadyPromise) await imageReadyPromise;
+if (shareBtn) {
+    shareBtn.addEventListener('click', async (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        if (imageReadyPromise) await imageReadyPromise;
 
-    shareImageWithNumber(generatedFile, generatedNumber);
-});
+        shareImageWithNumber(generatedFile, generatedNumber);
+    });
+}

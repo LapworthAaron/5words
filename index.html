@@ -3,16 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/styles.css?v=1.08">
+    <link rel="stylesheet" href="./css/styles.css?v=1.09">
     <title>5WORDS – Daily 5-Letter Word Puzzle Game | Free Online Word Challenge</title>
     <meta name="description" content="Play 5WORDS, the free daily word puzzle. Rearrange a 5x5 grid to uncover five hidden words. Swap letters, use colour clues, and challenge your brain every day.">
+    <link rel="canonical" href="https://5words.co.uk/">
     <link rel="shortcut icon" href="./assets/favicon.ico">
+    <meta property="og:type" content="website">
     <meta property="og:title" content="5WORDS – Daily 5‑Letter Word Puzzle Game | Free Online Word Challenge">
     <meta property="og:url" content="https://5words.co.uk">
     <meta property="og:description" content="Play 5WORDS, the free daily word puzzle where you rearrange a 5×5 grid to uncover five hidden five‑letter words. Swap letters, use colour clues, and challenge your brain every day.">
     <meta property="og:image" content="https://5words.co.uk/assets/sharing.png">
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:domain" content="5words.co.uk">
+    <meta property="twitter:url" content="https://5words.co.uk">
+    <meta property="twitter:title" content="5WORDS – Daily 5‑Letter Word Puzzle Game | Free Online Word Challenge">
+    <meta property="twitter:description" content="Play 5WORDS, the free daily word puzzle where you rearrange a 5×5 grid to uncover five hidden five‑letter words. Swap letters, use colour clues, and challenge your brain every day.">
+    <meta property="twitter:image" content="https://5words.co.uk/assets/sharing.png">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6988631606998998"
      crossorigin="anonymous"></script>
 </head>
@@ -26,19 +32,20 @@
 
         <nav id="nav" class="nav">
             <ul>
-                <li><div class="navlink howToPlay_icon">How To Play</div></li>
-                <li><div class="navlink privacy-link">Privacy Policy</div></li>
-                <li><div class="navlink terms-link">Terms of Service</div></li>
-                <li><div class="navlink about-link">About</div></li>
+                <li><a class="navlink" href="/">Today's Game</a></li>
+                <li><a class="navlink" href="/how-to-play.html">How To Play</a></li>
+                <li><a class="navlink privacy-link" href="/privacy-policy.html">Privacy Policy</a></li>
+                <li><a class="navlink" href="/terms.html">Terms of Service</a></li>
+                <li><a class="navlink" href="/about.html">About</a></li>
                 <li><a class="navlink" href="https://ko-fi.com/albansoftware">Buy Me a  Coffee</a></li>
             </ul>
         </nav>
 
-        <a href="/" id="navTitle"><img class="header-logo" src="./assets/5words-logo.png" alt="5Words logo"></a>
-        <h1 class="page_title hide">5Words</h1>
+        <a href="/" id="navTitle"><img class="header-logo" src="./assets/5words-logo.png" alt="5Words logo" title="5words"></a>
+        <h1 class="page_title visually-hidden">5Words</h1>
         <div class="stats_icon">
             <figure>
-                <img id="stats" src="./assets/stats.svg" alt="View your game statistics">
+                <img id="stats" src="./assets/stats.svg" alt="View your game statistics" title="stats">
             </figure>
         </div>
     </header>
@@ -106,7 +113,7 @@
                 <p class="sub-section__copy">5WORDS is a daily word‑puzzle challenge where you must uncover five hidden five‑letter words on a 5×5 board.</p>
                 <p class="sub-section__copy">Each puzzle is uniquely scrambled, and your goal is to swap letters across rows and columns until every row forms a valid word.</p>
                 <p class="sub-section__copy">It’s simple to learn, satisfying to solve, and perfect for fans of Wordle‑style logic games.</p>
-                <p class="sub-section__copy">Check the help section to learn how to play.</p>
+                <p class="sub-section__copy">Check the <a href="/how-to-play.html" style="color: var(--blue);">help section</a> to learn how to play.</p>
             </div>
             <div class="sub-section">
                 <h3 class="sub-section__heading">Strategy Tips for Solving 5WORDS</h3>
@@ -154,92 +161,6 @@
         </section>
     </main>
     
-    <dialog class="howToPlay__modal">
-        <button class="button howToPlay__close">X</button>
-        <section>
-            <div>
-                <h2 class="howToPlay__title">How to play</h2>
-                <h3 class="howToPlay__subtitle">Aim of the game:</h3>
-                <p class="howToPlay__copy">Unscramble the 5 words that are hidden on the board. Each <u>row</u> should contain a valid 5 letter word. You will have to swap letters across the rows and columns to find all five words.</p>
-                <h3 class="howToPlay__subtitle">Board:</h3>
-                <p class="howToPlay__copy">The game board is made up of 25 squares, formed into a 5 x 5 grid.</p>
-                
-                <div class="howToPlay__image-container">
-                    <img class="howToPlay__image emptyBoard" src="./assets/gameboard.png" alt="Empty 5x5 game board grid" loading="lazy">
-                </div>
-                <h3 class="howToPlay__subtitle">How:</h3>
-                <p class="howToPlay__copy">Swap letters by clicking/pressing on 2 letters you want to swap (one after another)</p>
-                <div class="howToPlay__image-container">
-                    <img class="howToPlay__image checkBoard" src="./assets/swap-letters.gif" alt="Animation showing how to swap letters on the board" loading="lazy">
-                </div>
-                <h3 class="howToPlay__subtitle">How do i know if it's correct?:</h3>
-                <p class="howToPlay__copy">Click the check button when you are happy with how the board is looking. It should end up looking something like below.</p>
-                <div class="howToPlay__image-container">
-                    <img class="howToPlay__image checkBoard" src="./assets/checkboard.png" alt="Example of a checked board with colour feedback" loading="lazy">
-                </div>
-                <h3 class="howToPlay__subtitle">What next?:</h3>
-                <p class="howToPlay__copy">The squares will light up with 3 different colours to help guide you to the solution</p>
-                <ul class="howToPlay__colours-list">
-                    <li class="howToPlay__colours">
-                        <img class="howToPlay__image image-letter" src="./assets/green.png" alt="Green tile indicating correct letter position" loading="lazy">
-                        <p class="howToPlay__copy"><strong><u>Green:</u></strong> This means you have the correct letter in the correct spot, do not move this anymore</p>
-                    </li>
-                    <li class="howToPlay__colours">
-                        <img class="howToPlay__image image-letter" src="./assets/orange.png" alt="Orange tile indicating correct row wrong column" loading="lazy">
-                        <p class="howToPlay__copy"><strong><u>Orange:</u></strong> This means you have a letter that is in the correct row, but not the correct column</p>
-                    </li>
-                    <li class="howToPlay__colours">
-                        <img class="howToPlay__image image-letter" src="./assets/pink.png" alt="Pink tile indicating correct column wrong row" loading="lazy">
-                        <p class="howToPlay__copy"><strong><u>Pink:</u></strong> This means you have a letter in the correct column, but not the correct row</p>
-                    </li>
-                </ul>
-                <h3 class="howToPlay__subtitle">Tips:</h3>
-                <ul class="howToPlay__tips">
-                    <li class="howToPlay__copy">The order of checking is for correctly positioned letters (Green), then correct row but incorrect column (Orange) and finally the correct column but incorrect row (Pink). So take care!</li>
-                    <li class="howToPlay__copy">Try to make as many letter swaps as you feel comfortable doing inbetween each check, this will minimise checks and make you look like a Pro</li>
-                    <li class="howToPlay__copy">Each word has to be in the correct row, but the check validation will help with that</li>
-                </ul>
-            </div>
-        </section>
-    </dialog>
-    <dialog class="stats__modal">
-        <button class="button stats__close">X</button>
-        <section>
-            <div class="share__container">
-                <img class="share__image" src="">
-                <p class="share__caption"></p>
-                <button id="share--button" class="button">Share</button>
-            </div>
-            <div>
-                <h2 class="stats__title">Stats</h2>
-                <div class="stats__score-container">
-                    <p class="stats__copy">Played: </p>
-                    <p class="stats__copy played"></p>
-                </div>
-                <div class="stats__score-container">
-                    <p class="stats__copy">Completed: </p>
-                    <p class="stats__copy completed"></p>
-                </div>
-                <div class="stats__score-container">
-                    <p class="stats__copy">Current Streak: </p>
-                    <p class="stats__copy current_streak"></p>
-                </div>
-                <div class="stats__score-container">
-                    <p class="stats__copy">Best game (checks): </p>
-                    <p class="stats__copy checks"></p>
-                </div>
-                <div class="stats__score-container">
-                    <p class="stats__copy">Best Streak: </p>
-                    <p class="stats__copy best_streak"></p>
-                </div>
-
-                <div class="stats_delete-container">
-                    <button class="button stats_btn_close">Close</button>
-                    <button class="button stats_btn_delete">Delete Stats</button>
-                </div>
-            </div>
-        </section>
-    </dialog>
     
     <div class="ads-banner">
         <ins class="adsbygoogle"
@@ -252,98 +173,16 @@
     </div>
     <footer>
         <section class="footer__link-container">
-            <div class="footer_link privacy-link">Privacy Policy</div>
-            <div class="footer_link terms-link">Terms of Service</div>
-            <div class="footer_link about-link">About</div>
+            <a class="footer_link privacy-link" href="/privacy-policy.html">Privacy Policy</a>
+            <a class="footer_link" href="/terms.html">Terms of Service</a>
+            <a class="footer_link" href="/about.html">About</a>
             <a class="footer_link" href="mailto:albansoftware@gmail.com">Contact Us</a>
         </section>
     </footer>
-    <dialog class="privacy__modal">
-        <button class="button privacy__close">X</button>
-        <section>
-            <div>
-                <h2 class="privacy__title">Privacy Policy</h2>
-                <br><p class="privacy__copy">Effective Date: 24th October 2025</p>
-                <br><p class="privacy__copy">This Privacy Policy explains how we collect, use, and protect your information when you visit 5WORDS (5words.co.uk) ("we", "our", or "us"). By using our website, you agree to the terms outlined below.</p>
-                <br><h3 class="privacy__copy">1. Information We Collect</h3>
-                <p class="privacy__copy">We may collect the following types of information:</p>
-                <p class="privacy__copy">- Personal Information: Name, email address, or other contact details if you submit them via forms.</p>
-                <p class="privacy__copy">- Non-Personal Information: Browser type, device information, pages visited, and time spent on site.</p>
-                <br><h3 class="privacy__copy">2. Use of Cookies</h3>
-                <p class="privacy__copy">We use cookies to enhance your browsing experience. Cookies are small data files stored on your device that help us:</p>
-                <p class="privacy__copy">- Remember your preferences</p>
-                <p class="privacy__copy">- Analyze site traffic</p>
-                <p class="privacy__copy">- Serve personalized ads via third-party vendors like Google</p>
-                <p class="privacy__copy">You can disable cookies through your browser settings, but some features may not function properly.</p>
-                <br><h3 class="privacy__copy">3. Google AdSense and Third-Party Advertising</h3>
-                <p class="privacy__copy">We use Google AdSense to display ads. Google and its partners may use cookies to serve ads based on your prior visits to this and other websites.</p>
-                <p class="privacy__copy">Google’s use of advertising cookies enables it and its partners to serve ads to you based on your visit to our site and/or other sites on the Internet.</p>
-                <p class="privacy__copy">You can opt out of personalized advertising by visiting Google Ads Settings.</p>
-                <br><h3 class="privacy__copy">4. Data Sharing</h3>
-                <p class="privacy__copy">We do not sell, trade, or rent your personal information. We may share data with trusted third-party services for analytics, advertising, or site functionality.</p>
-                <br><h3 class="privacy__copy">5. Your Rights</h3>
-                <p class="privacy__copy">You have the right to:</p>
-                <p class="privacy__copy">- Access, update, or delete your personal data</p>
-                <p class="privacy__copy">- Opt out of marketing communications</p>
-                <p class="privacy__copy">- Request information about how your data is used</p>
-                <p class="privacy__copy">To exercise these rights, contact us at albansoftware@gmail.com.</p>
-                <br><h3 class="privacy__copy">6. Changes to This Policy</h3>
-                <p class="privacy__copy">We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated effective date.</p>
-                <br><h3 class="privacy__copy">7. Contact Us</h3>
-                <p class="privacy__copy">If you have questions about this Privacy Policy, please contact us at: Email: albansoftware@gmail.com</p>
-                <br><p class="privacy__copy">Website: 5words.co.uk</p>
-            </div>
-        </section>
-    </dialog>
-    <dialog class="terms__modal">
-        <button class="button terms__close">X</button>
-        <section>
-            <div>
-                <h2 class="terms__title">Terms of Service</h2>
-                <br><p class="terms__copy">Effective Date: 24th October 2025</p>
-                <br><p class="terms__copy">Welcome to 5WORDS (5words.co.uk). By accessing or using this website, you agree to be bound by these Terms of Service. If you do not agree with any part of these terms, please do not use the website.</p>
-                <br><h3 class="terms__copy">1. Use of the Service</h3>
-                <p class="terms__copy">5WORDS is a free online daily word puzzle game. You may use the website for personal, non-commercial purposes only. You agree not to misuse the service, attempt to disrupt its operation, or use automated tools to access it.</p>
-                <br><h3 class="terms__copy">2. Intellectual Property</h3>
-                <p class="terms__copy">All content on this website, including but not limited to text, graphics, logos, images, and software, is the property of 5WORDS and is protected by applicable intellectual property laws. You may not reproduce, distribute, or create derivative works without prior written permission.</p>
-                <br><h3 class="terms__copy">3. User Conduct</h3>
-                <p class="terms__copy">You agree to use 5WORDS responsibly and in accordance with all applicable laws. You must not use the website to transmit harmful, offensive, or unlawful content, or to engage in any activity that could damage the website or its users.</p>
-                <br><h3 class="terms__copy">4. Cookies and Advertising</h3>
-                <p class="terms__copy">This website uses cookies and displays advertisements through Google AdSense. By using the website, you consent to the use of cookies as described in our Privacy Policy. Third-party advertisers may also use cookies to serve personalised ads.</p>
-                <br><h3 class="terms__copy">5. Disclaimer of Warranties</h3>
-                <p class="terms__copy">5WORDS is provided on an "as is" and "as available" basis. We make no warranties, expressed or implied, regarding the reliability, accuracy, or availability of the website. We do not guarantee that the service will be uninterrupted or error-free.</p>
-                <br><h3 class="terms__copy">6. Limitation of Liability</h3>
-                <p class="terms__copy">To the fullest extent permitted by law, 5WORDS and its creators shall not be liable for any indirect, incidental, or consequential damages arising from your use of the website.</p>
-                <br><h3 class="terms__copy">7. Changes to These Terms</h3>
-                <p class="terms__copy">We reserve the right to update these Terms of Service at any time. Changes will be posted on this page with an updated effective date. Continued use of the website after changes constitutes acceptance of the revised terms.</p>
-                <br><h3 class="terms__copy">8. Contact Us</h3>
-                <p class="terms__copy">If you have questions about these Terms of Service, please contact us at: Email: albansoftware@gmail.com</p>
-                <br><p class="terms__copy">Website: 5words.co.uk</p>
-            </div>
-        </section>
-    </dialog>
-    <dialog class="about__modal">
-        <button class="button about__close">X</button>
-        <section>
-            <div>
-                <h2 class="about__title">About 5WORDS</h2>
-                <br><p class="about__copy">5WORDS is a free daily word puzzle game created by Alban Software. Each day, a new puzzle is generated featuring five hidden five-letter words scrambled across a 5x5 grid.</p>
-                <br><p class="about__copy">Your challenge is to swap letters across the board until every row contains a valid English word. Colour-coded clues guide you towards the solution: green means a letter is in the right spot, orange means right row but wrong column, and pink means right column but wrong row.</p>
-                <br><h3 class="about__copy">Our Mission</h3>
-                <p class="about__copy">We built 5WORDS to offer a fun, quick daily brain exercise that anyone can enjoy. Whether you are a word game enthusiast or just looking for a few minutes of mental stimulation, 5WORDS is designed to challenge and entertain.</p>
-                <br><h3 class="about__copy">How It Works</h3>
-                <p class="about__copy">A fresh puzzle is available every day. Your progress, stats, and streaks are saved locally in your browser so you can track your improvement over time. Share your results with friends and see who can solve the puzzle in fewer checks.</p>
-                <br><h3 class="about__copy">Contact</h3>
-                <p class="about__copy">Have feedback, questions, or suggestions? We would love to hear from you.</p>
-                <p class="about__copy">Email: <a href="mailto:albansoftware@gmail.com" style="color: var(--blue);">albansoftware@gmail.com</a></p>
-                <br><p class="about__copy">Website: 5words.co.uk</p>
-            </div>
-        </section>
-    </dialog>
-    <script src="./js/game.js?v=1.05" defer></script>
+    <script src="./js/game.js?v=1.06" defer></script>
     <!-- <script src="./js/words.js"></script> -->
-    <script src="./js/nav.js?v=1.08" defer></script>
-    <script src="./js/footer.js?v=1.03" defer></script>
-    <script src="./js/share.js?v=1.03" defer></script>
+    <script src="./js/nav.js?v=1.09" defer></script>
+    <script src="./js/footer.js?v=1.04" defer></script>
+    <script src="./js/share.js?v=1.04" defer></script>
 </body>
 </html>
