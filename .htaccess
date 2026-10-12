@@ -1,5 +1,15 @@
 RewriteEngine On
 
+# Force the apex host - www.5words.co.uk was serving a duplicate 200 of every page
+RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
+
+# The homepage lives at / only. Without this, /index.html was redirected to
+# /index, which then served a second, indexable copy of the home page.
+# Must come before the generic .html rule below.
+RewriteCond %{THE_REQUEST} \s/+index(\.html)?[\s?] [NC]
+RewriteRule ^ / [R=301,L]
+
 # If someone requests /page.html directly, send them to the clean URL /page
 # (keeps one canonical URL per page instead of two)
 RewriteCond %{THE_REQUEST} \s/+(.+)\.html[\s?] [NC]

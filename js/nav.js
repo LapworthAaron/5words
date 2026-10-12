@@ -31,21 +31,28 @@ document.addEventListener("DOMContentLoaded", function() {
     const statsModal = document.querySelector('.stats__modal');
     const stats__icon = document.querySelector('#stats');
 
-    statsModal.addEventListener('click', function (e) {
-        if (e.target === statsModal) {
-            statsModal.close();
+    //the modal isn't on every page, so only wire it up when it's present
+    if (statsModal) {
+        statsModal.addEventListener('click', function (e) {
+            if (e.target === statsModal) {
+                statsModal.close();
+            }
+        });
+
+        if (stats__icon) {
+            stats__icon.addEventListener("click", () => {
+                setupStatsModal();
+                statsModal.showModal();
+            });
         }
-    });
 
-    stats__icon.addEventListener("click", () => {
-        setupStatsModal();
-        statsModal.showModal();
-    });
-
-    const stats_close = document.querySelector('.stats__close');
-    stats_close.addEventListener("click", () => {
-        statsModal.close();
-    });
+        const stats_close = document.querySelector('.stats__close');
+        if (stats_close) {
+            stats_close.addEventListener("click", () => {
+                statsModal.close();
+            });
+        }
+    }
 
     initialiseStats();
 });
@@ -68,9 +75,10 @@ initialiseStats  = () =>  {
         if (needsWrite) {
             localStorage.setItem('stats_5words', JSON.stringify(stats));
         }
-        //add new games
-        statsAddGames();
     };
+    //note: games played is counted by game.js when a new board is dealt, not here.
+    //this runs on every page, so counting it here credited a game for simply
+    //loading the home page or a legal page.
 };
 
 
@@ -128,6 +136,11 @@ statsNewStats = () => {
 
 statsAddGames = () => {
     let stats = JSON.parse(localStorage.getItem('stats_5words'));
+    //game.js can reach this before initialiseStats has run, so don't assume a record exists
+    if (!stats) {
+        statsNewStats();
+        stats = JSON.parse(localStorage.getItem('stats_5words'));
+    }
     if (stats.currentGame_date.substr(5) !== new Date().toJSON().slice(0, 10)) {
         stats.played +=1;
         stats.currentGame_date = "prog-".concat(new Date().toJSON().slice(0, 10));

@@ -6,11 +6,13 @@
     <script async src="https://fundingchoicesmessages.google.com/i/pub-6988631606998998?ers=1"></script>
     <script>(function() {function signalGooglefcPresent() {if (!window.frames['googlefcPresent']) {if (document.body) {const iframe = document.createElement('iframe'); iframe.style = 'width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;'; iframe.style.display = 'none'; iframe.name = 'googlefcPresent'; document.body.appendChild(iframe);} else {setTimeout(signalGooglefcPresent, 0);}}}signalGooglefcPresent();})();</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/styles.css?v=1.09">
+    <link rel="stylesheet" href="./css/styles.css?v=1.11">
     <title>How To Play | 5WORDS</title>
     <meta name="description" content="Learn how to play 5WORDS: swap letters across a 5x5 grid, use the green, orange and pink colour clues, and uncover five hidden words each day.">
     <link rel="canonical" href="https://5words.co.uk/how-to-play">
-    <link rel="shortcut icon" href="./assets/favicon.ico">
+    <link rel="icon" href="./assets/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32.png">
+    <link rel="apple-touch-icon" href="./assets/apple-touch-icon.png">
 </head>
 <body>
     <header>
@@ -22,8 +24,11 @@
 
         <nav id="nav" class="nav">
             <ul>
-                <li><a class="navlink" href="/">Today's Game</a></li>
+                <li><a class="navlink" href="/">Home</a></li>
+                <li><a class="navlink" href="/todays-game">Today's Game</a></li>
+                <li><a class="navlink" href="/archive">Puzzle Archive</a></li>
                 <li><a class="navlink" href="/how-to-play">How To Play</a></li>
+                <li><a class="navlink" href="/#similar-games">Similar Games</a></li>
                 <li><a class="navlink" href="/privacy-policy">Privacy Policy</a></li>
                 <li><a class="navlink" href="/terms">Terms of Service</a></li>
                 <li><a class="navlink" href="/about">About</a></li>
@@ -31,7 +36,7 @@
             </ul>
         </nav>
 
-        <a href="/" id="navTitle"><img class="header-logo" src="./assets/5words-logo.png" alt="5Words logo"></a>
+        <a href="/" id="navTitle"><img class="header-logo" src="./assets/5words-logo.png" alt="5Words logo" width="490" height="100"></a>
         <div class="stats_icon">
             <figure>
                 <img id="stats" src="./assets/stats.svg" alt="View your game statistics">
@@ -46,17 +51,20 @@
         <p class="howToPlay__copy">The game board is made up of 25 squares, formed into a 5 x 5 grid.</p>
 
         <div class="howToPlay__image-container">
-            <img class="howToPlay__image emptyBoard" src="./assets/gameboard.png" alt="Empty 5x5 game board grid" loading="lazy">
+            <img class="howToPlay__image emptyBoard" src="./assets/gameboard.png" alt="Empty 5x5 game board grid" width="438" height="458" loading="lazy">
         </div>
         <h2 class="howToPlay__subtitle">How:</h2>
         <p class="howToPlay__copy">Swap letters by clicking/pressing on 2 letters you want to swap (one after another)</p>
         <div class="howToPlay__image-container">
-            <img class="howToPlay__image checkBoard" src="./assets/swap-letters.gif" alt="Animation showing how to swap letters on the board" loading="lazy">
+            <picture>
+                <source srcset="./assets/swap-letters.webp" type="image/webp">
+                <img class="howToPlay__image checkBoard" src="./assets/swap-letters.gif" alt="Animation showing how to swap letters on the board" width="400" height="404" loading="lazy">
+            </picture>
         </div>
         <h2 class="howToPlay__subtitle">How do i know if it's correct?:</h2>
         <p class="howToPlay__copy">Click the check button when you are happy with how the board is looking. It should end up looking something like below.</p>
         <div class="howToPlay__image-container">
-            <img class="howToPlay__image checkBoard" src="./assets/checkboard.png" alt="Example of a checked board with colour feedback" loading="lazy">
+            <img class="howToPlay__image checkBoard" src="./assets/checkboard.png" alt="Example of a checked board with colour feedback" width="438" height="458" loading="lazy">
         </div>
         <h2 class="howToPlay__subtitle">What next?:</h2>
         <p class="howToPlay__copy">The squares will light up with 3 different colours to help guide you to the solution</p>
@@ -127,8 +135,8 @@
             </div>
         </section>
     </dialog>
-    <script src="./js/nav.js?v=1.09" defer></script>
+    <script src="./js/nav.js?v=1.11" defer></script>
     <script src="./js/footer.js?v=1.04" defer></script>
-    <script src="./js/share.js?v=1.04" defer></script>
+    <script src="./js/share.js?v=1.06" defer></script>
 </body>
 </html>

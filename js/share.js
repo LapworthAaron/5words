@@ -1,5 +1,10 @@
 /***********************/
 /* Share functionality */
+
+//archive games override these so the result reads "puzzle #120" and links to that puzzle
+const shareLabel = () => window.shareLabel || "today's challenge";
+const shareTargetUrl = () => window.shareUrl || "https://5words.co.uk/todays-game";
+
 async function createImageWithNumber(number) {
     const img = new Image();
     img.crossOrigin = "anonymous"; // needed if the image is remote
@@ -77,7 +82,7 @@ async function createImageWithNumber(number) {
 
     const imgEl = document.querySelector(".share__image");
     imgEl.src = canvas.toDataURL("image/png");
-    document.querySelector(".share__caption").textContent = `You have completed today's challenge, congratulations! You did it in ${number} checks.`
+    document.querySelector(".share__caption").textContent = `You have completed ${shareLabel()}, congratulations! You did it in ${number} checks.`
 
     return canvas;
 }
@@ -101,15 +106,17 @@ async function generateImageWithNumber(number) {
 }
 
 async function shareImageWithNumber(image, number) {
+    const shareText = `I completed ${shareLabel()} in ${number} checks. Why don't you have a go at ${shareTargetUrl()}`;
     if (navigator.canShare && navigator.canShare({ files: [image] })) {
         await navigator.share({
         files: [image],
-        text: `I completed today's challenge in ${number} checks. Why don't you have a go at https://5words.co.uk`
+        text: shareText
         });
     } else {
         console.log("Sharing not supported on this device");
-        navigator.clipboard.writeText(image).then(() => {
-            alert("Sharing not supported on this device. Link copied to clipboard");
+        //copy the message, not the file - writeText on a File just yields "[object File]"
+        navigator.clipboard.writeText(shareText).then(() => {
+            alert("Sharing not supported on this device. Result copied to clipboard");
         });
     }
 }

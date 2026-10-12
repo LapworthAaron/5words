@@ -9,15 +9,40 @@ let liveGame = 0;
 let counterEl = null;
 let checkBtn = null;
 
+//archive mode plays a past puzzle. It keeps its own saved board so it can't
+//clobber today's game, and it never touches the daily streak or played/wins.
+let archiveMode = false;
+let archiveId = 0;
+
+//which localStorage slot this board lives in
+const boardKey = () => archiveMode ? `board_5words_archive_${archiveId}` : 'board_5words';
+
 // getData(word_file);
 document.addEventListener("DOMContentLoaded", async () => {
     counterEl = document.querySelector('.counter__count');
     checkBtn = document.querySelector(".check");
+
+    archiveMode = document.body.dataset.gameMode === 'archive';
+    const started = archiveMode ? await startArchiveGame() : await startDailyGame();
+    if (!started) {
+        return;
+    }
+
+    //event listener for check button
+    checkBtn.addEventListener("click", handleCheck);
+});
+
+//today's puzzle - resume the saved board if it's still today's, otherwise deal a new one
+const startDailyGame = async () => {
     const daily = await dailyWords();
+    if (!daily) {
+        showGameError("We couldn't load today's puzzle. Please try again shortly.");
+        return false;
+    }
     latestGame = daily.gameId;
 
     //if statement to load complete board from local storage or populateletters if not
-    const boardArray = JSON.parse(localStorage.getItem('board_5words'));
+    const boardArray = JSON.parse(localStorage.getItem(boardKey()));
     if (boardArray) {
         if (boardArray.id === latestGame) {
             loadGameBoard();
@@ -40,11 +65,66 @@ document.addEventListener("DOMContentLoaded", async () => {
         liveGame = latestGame;
         populateLetters(daily);
     }
+    return true;
+}
 
+//a past puzzle, chosen from the archive via ?game=<id>
+const startArchiveGame = async () => {
+    archiveId = parseInt(new URLSearchParams(window.location.search).get('game'), 10);
+    if (!Number.isInteger(archiveId) || archiveId < 1) {
+        showGameError("That puzzle number isn't valid. Pick one from the archive.");
+        return false;
+    }
 
-    //event listener for check button
-    checkBtn.addEventListener("click", handleCheck);
-});
+    const game = await archiveWords(archiveId);
+    if (!game) {
+        showGameError(`We couldn't find puzzle #${archiveId}. It may not exist yet.`);
+        return false;
+    }
+
+    latestGame = game.gameId;
+    liveGame = game.gameId;
+    archiveSetHeading(game);
+
+    const boardArray = JSON.parse(localStorage.getItem(boardKey()));
+    if (boardArray && boardArray.id === game.gameId) {
+        loadGameBoard();
+        currentGame = boardArray.id;
+        document.querySelector(".share__container").classList.remove("share__show");
+    } else {
+        populateLetters(game);
+    }
+    return true;
+}
+
+//put the puzzle number and date above the board, and tell share.js what to call it
+const archiveSetHeading = (game) => {
+    const heading = document.querySelector('.archive-game__heading');
+    if (heading) {
+        heading.textContent = `Puzzle #${game.gameId}`;
+    }
+    const dateEl = document.querySelector('.archive-game__date');
+    if (dateEl && game.gameDate) {
+        const d = new Date(game.gameDate + 'T00:00:00Z');
+        dateEl.textContent = d.toLocaleDateString('en-GB', {
+            weekday: 'long', day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC'
+        });
+        dateEl.setAttribute('datetime', game.gameDate);
+    }
+    window.shareLabel = `5WORDS puzzle #${game.gameId}`;
+    window.shareUrl = `https://5words.co.uk/archive-game?game=${game.gameId}`;
+}
+
+const showGameError = (message) => {
+    const target = document.querySelector('.game-error');
+    if (target) {
+        target.textContent = message;
+        target.classList.add('game-error--show');
+    }
+    if (checkBtn) {
+        checkBtn.disabled = true;
+    }
+}
 
 //non api based random words game - practice mode?
 // console.log(chosenWords)
@@ -64,8 +144,25 @@ populateLetters = async(daily) => {
     chosenWords = daily.words;
     updateHTML(daily.shuffled.toUpperCase());
     saveGameBoard("n");
-    statsAddGames();
+    //past puzzles don't count towards games played
+    if (!archiveMode) {
+        statsAddGames();
+    }
 }
+
+//shape a row from the api into the object the game works with
+const mapGameRow = (row) => ({
+    gameId: row.game_id,
+    gameDate: row.game_date,
+    words: [
+        row.word_1,
+        row.word_2,
+        row.word_3,
+        row.word_4,
+        row.word_5
+    ],
+    shuffled: row.shuffle_words
+});
 
 //api call
 const dailyWords = async () => {
@@ -75,19 +172,28 @@ const dailyWords = async () => {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
         const data = await response.json();
-        return {
-            gameId: data[0].game_id,
-            words: [
-                data[0].word_1,
-                data[0].word_2,
-                data[0].word_3,
-                data[0].word_4,
-                data[0].word_5
-            ],
-            shuffled: data[0].shuffle_words
-        };
+        return mapGameRow(data[0]);
     } catch (error) {
         console.error('Error fetching daily words:', error);
+        return null;
+    }
+};
+
+//api call for a single past puzzle
+const archiveWords = async (id) => {
+    try {
+        const response = await fetch(`https://5words.co.uk/api/get_game.php?game_id=${encodeURIComponent(id)}`);
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const data = await response.json();
+        if (!Array.isArray(data) || !data.length) {
+            return null;
+        }
+        return mapGameRow(data[0]);
+    } catch (error) {
+        console.error('Error fetching archive words:', error);
+        return null;
     }
 };
 
@@ -200,8 +306,12 @@ checkWin = () => {
     }
     
     if (correctletters === 25) {
-        //add win to stats
-        statsGameComplete();
+        //add win to stats - past puzzles are kept out of the daily streak
+        if (archiveMode) {
+            archiveMarkComplete(archiveId);
+        } else {
+            statsGameComplete();
+        }
         //save board status
         saveGameBoard("y");
         //load modal
@@ -276,7 +386,7 @@ checkCol = () => {
 //store game board so it doesn't reset each load
 saveGameBoard = (completeGame) => {
     let boardArray = document.getElementById('letterSection').innerHTML;
-    localStorage.setItem('board_5words',
+    localStorage.setItem(boardKey(),
         JSON.stringify({
             id: liveGame,
             date: new Date().toJSON().slice(0, 10),
@@ -290,10 +400,28 @@ saveGameBoard = (completeGame) => {
 
 //load game board so it doesn't reset each load
 loadGameBoard = () => {
-    const boardArray = JSON.parse(localStorage.getItem('board_5words'));
+    const boardArray = JSON.parse(localStorage.getItem(boardKey()));
     document.getElementById('letterSection').innerHTML = boardArray.board;
     chosenWords = boardArray.words;
     counterEl.textContent = boardArray.counter;
     initialiseLetterClick();
+}
+
+//remember which past puzzles have been solved, so the archive list can tick them off
+const archiveCompletedIds = () => {
+    try {
+        const raw = JSON.parse(localStorage.getItem('archive_5words_done'));
+        return Array.isArray(raw) ? raw : [];
+    } catch (e) {
+        return [];
+    }
+}
+
+const archiveMarkComplete = (id) => {
+    const done = archiveCompletedIds();
+    if (!done.includes(id)) {
+        done.push(id);
+        localStorage.setItem('archive_5words_done', JSON.stringify(done));
+    }
 }
 

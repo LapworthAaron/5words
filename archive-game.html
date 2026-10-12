@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Google Privacy & messaging (Funding Choices) consent banner - must load before other scripts -->
+    <script async src="https://fundingchoicesmessages.google.com/i/pub-6988631606998998?ers=1"></script>
+    <script>(function() {function signalGooglefcPresent() {if (!window.frames['googlefcPresent']) {if (document.body) {const iframe = document.createElement('iframe'); iframe.style = 'width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;'; iframe.style.display = 'none'; iframe.name = 'googlefcPresent'; document.body.appendChild(iframe);} else {setTimeout(signalGooglefcPresent, 0);}}}signalGooglefcPresent();})();</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/styles.css?v=1.11">
+    <title>Play a Past Puzzle | 5WORDS Archive</title>
+    <meta name="description" content="Play a past 5WORDS puzzle from the archive. Swap letters around the 5x5 grid until all five rows spell valid five-letter words.">
+    <link rel="canonical" href="https://5words.co.uk/archive">
+    <link rel="icon" href="./assets/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32.png">
+    <link rel="apple-touch-icon" href="./assets/apple-touch-icon.png">
+    <meta name="theme-color" content="#000814">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="5WORDS">
+    <meta property="og:title" content="Play a Past Puzzle | 5WORDS Archive">
+    <meta property="og:url" content="https://5words.co.uk/archive">
+    <meta property="og:description" content="Play a past 5WORDS puzzle from the archive.">
+    <meta property="og:image" content="https://5words.co.uk/assets/sharing.png">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:domain" content="5words.co.uk">
+    <meta property="twitter:title" content="Play a Past Puzzle | 5WORDS Archive">
+    <meta property="twitter:description" content="Play a past 5WORDS puzzle from the archive.">
+    <meta property="twitter:image" content="https://5words.co.uk/assets/sharing.png">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6988631606998998"
+     crossorigin="anonymous"></script>
+</head>
+<body data-game-mode="archive">
+    <header>
+        <div class="hamburger" aria-expanded="false" aria-controls="nav">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <nav id="nav" class="nav">
+            <ul>
+                <li><a class="navlink" href="/">Home</a></li>
+                <li><a class="navlink" href="/todays-game">Today's Game</a></li>
+                <li><a class="navlink" href="/archive">Puzzle Archive</a></li>
+                <li><a class="navlink" href="/how-to-play">How To Play</a></li>
+                <li><a class="navlink" href="/#similar-games">Similar Games</a></li>
+                <li><a class="navlink privacy-link" href="/privacy-policy">Privacy Policy</a></li>
+                <li><a class="navlink" href="/terms">Terms of Service</a></li>
+                <li><a class="navlink" href="/about">About</a></li>
+                <li><a class="navlink" href="https://ko-fi.com/albansoftware">Buy Me a  Coffee</a></li>
+            </ul>
+        </nav>
+
+        <a href="/" id="navTitle"><img class="header-logo" src="./assets/5words-logo.png" alt="5Words logo" width="490" height="100" title="5words"></a>
+        <div class="stats_icon">
+            <figure>
+                <img id="stats" src="./assets/stats.svg" alt="View your game statistics" title="stats">
+            </figure>
+        </div>
+    </header>
+    <main>
+        <section class="archive-game__bar">
+            <h1 class="archive-game__heading">Archive puzzle</h1>
+            <time class="archive-game__date"></time>
+            <p class="archive-game__note">Archive puzzles don't affect your daily streak.</p>
+            <p class="game-error" role="status"></p>
+        </section>
+        <section id="letterSection" class="letter_game">
+            <div id="letter_container" class="letter_container">
+                <div id="row_1" class="rows">
+                    <div class="letter_box" id="letter_1">*</div>
+                    <div class="letter_box" id="letter_2">*</div>
+                    <div class="letter_box" id="letter_3">*</div>
+                    <div class="letter_box" id="letter_4">*</div>
+                    <div class="letter_box" id="letter_5">*</div>
+                </div>
+                <div id="row_2" class="rows">
+                    <div class="letter_box" id="letter_6">5</div>
+                    <div class="letter_box" id="letter_7">w</div>
+                    <div class="letter_box" id="letter_8">o</div>
+                    <div class="letter_box" id="letter_9">r</div>
+                    <div class="letter_box" id="letter_10">d</div>
+                </div>
+                <div id="row_3" class="rows">
+                    <div class="letter_box" id="letter_11">*</div>
+                    <div class="letter_box" id="letter_12">*</div>
+                    <div class="letter_box" id="letter_13">*</div>
+                    <div class="letter_box" id="letter_14">*</div>
+                    <div class="letter_box" id="letter_15">*</div>
+                </div>
+                <div id="row_4" class="rows">
+                    <div class="letter_box" id="letter_16">5</div>
+                    <div class="letter_box" id="letter_17">w</div>
+                    <div class="letter_box" id="letter_18">o</div>
+                    <div class="letter_box" id="letter_19">r</div>
+                    <div class="letter_box" id="letter_20">d</div>
+                </div>
+                <div id="row_5" class="rows">
+                    <div class="letter_box" id="letter_21">*</div>
+                    <div class="letter_box" id="letter_22">*</div>
+                    <div class="letter_box" id="letter_23">*</div>
+                    <div class="letter_box" id="letter_24">*</div>
+                    <div class="letter_box" id="letter_25">*</div>
+                </div>
+            </div>
+        </section>
+        <section id="scoreArea">
+        <div id="checkBox">
+            <button type="button" class="button check">CHECK</button>
+            <div class="counter_container">
+                <p class="counter__title">Checks:</p>
+                <p class="counter__count">0</p>
+            </div>
+        </div>
+        </section>
+        <p class="archive-game__back"><a class="inline-link" href="/archive">&larr; Back to the archive</a> &middot; <a class="inline-link" href="/todays-game">Play today's puzzle</a></p>
+        <div class="ads-banner">
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-6988631606998998"
+                data-ad-slot="auto"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+        <section id="infoArea">
+            <div class="sub-section">
+                <h2 class="sub-section__heading">Colour Guide</h2>
+                <p class="sub-section__copy">Every time you press CHECK, the tiles light up in three colours to tell you how close each letter is.</p>
+                <ul class="howToPlay__colours-list">
+                    <li class="howToPlay__colours">
+                        <img class="howToPlay__image image-letter" src="./assets/green.png" alt="Green tile indicating correct letter position" width="80" height="80" loading="lazy">
+                        <p class="howToPlay__copy"><strong><u>Green:</u></strong> This means you have the correct letter in the correct spot, do not move this anymore</p>
+                    </li>
+                    <li class="howToPlay__colours">
+                        <img class="howToPlay__image image-letter" src="./assets/orange.png" alt="Orange tile indicating correct row wrong column" width="80" height="80" loading="lazy">
+                        <p class="howToPlay__copy"><strong><u>Orange:</u></strong> This means you have a letter that is in the correct row, but not the correct column</p>
+                    </li>
+                    <li class="howToPlay__colours">
+                        <img class="howToPlay__image image-letter" src="./assets/pink.png" alt="Pink tile indicating correct column wrong row" width="80" height="80" loading="lazy">
+                        <p class="howToPlay__copy"><strong><u>Pink:</u></strong> This means you have a letter in the correct column, but not the correct row</p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <div class="ads-banner">
+        <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-6988631606998998"
+            data-ad-slot="auto"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <footer>
+        <section class="footer__link-container">
+            <a class="footer_link privacy-link" href="/privacy-policy">Privacy Policy</a>
+            <a class="footer_link" href="/terms">Terms of Service</a>
+            <a class="footer_link" href="/about">About</a>
+            <a class="footer_link" href="mailto:albansoftware@gmail.com">Contact Us</a>
+        </section>
+    </footer>
+    <dialog class="stats__modal">
+        <button class="button stats__close">X</button>
+        <section>
+            <div class="share__container">
+                <img class="share__image" src="" alt="Your 5WORDS result card">
+                <p class="share__caption"></p>
+                <button id="share--button" class="button">Share</button>
+            </div>
+            <div>
+                <h2 class="stats__title">Stats</h2>
+                <div class="stats__score-container">
+                    <p class="stats__copy">Played: </p>
+                    <p class="stats__copy played"></p>
+                </div>
+                <div class="stats__score-container">
+                    <p class="stats__copy">Completed: </p>
+                    <p class="stats__copy completed"></p>
+                </div>
+                <div class="stats__score-container">
+                    <p class="stats__copy">Current Streak: </p>
+                    <p class="stats__copy current_streak"></p>
+                </div>
+                <div class="stats__score-container">
+                    <p class="stats__copy">Best game (checks): </p>
+                    <p class="stats__copy checks"></p>
+                </div>
+                <div class="stats__score-container">
+                    <p class="stats__copy">Best Streak: </p>
+                    <p class="stats__copy best_streak"></p>
+                </div>
+
+                <div class="stats_delete-container">
+                    <button class="button stats_btn_close">Close</button>
+                    <button class="button stats_btn_delete">Delete Stats</button>
+                </div>
+            </div>
+        </section>
+    </dialog>
+    <script src="./js/game.js?v=1.08" defer></script>
+    <script src="./js/nav.js?v=1.11" defer></script>
+    <script src="./js/footer.js?v=1.04" defer></script>
+    <script src="./js/share.js?v=1.06" defer></script>
+</body>
+</html>
